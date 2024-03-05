@@ -36,7 +36,7 @@ protected:
 	float energia;
 	float peso;
 	float volumen;
-	float puntos;
+	
 
 
 
