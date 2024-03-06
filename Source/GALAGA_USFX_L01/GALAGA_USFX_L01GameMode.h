@@ -16,6 +16,8 @@ public:
 	AGALAGA_USFX_L01GameMode();
 public:
 	 ANaveEnemiga*NaveEnemiga01;
+	 ANaveEnemiga* NaveEnemigaCaza01;
+	 ANaveEnemiga* NaveEnemigaTransporte01;
 
 protected:
 	// Called when the game starts or when spawned

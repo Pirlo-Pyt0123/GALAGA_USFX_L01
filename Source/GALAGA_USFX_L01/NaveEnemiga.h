@@ -18,7 +18,7 @@ public:
 
 protected:
 
-	
+
 	float velocidad;
 	int velocity;
 	FString nombre;
@@ -48,6 +48,8 @@ public:
 	FORCEINLINE FString GetNombre() const { return nombre; }
 	FORCEINLINE float GetTiempoDisparo() const { return tiempoDisparo; }
 	FORCEINLINE FVector GetPosicion() const { return posicion; }
+	FORCEINLINE float GetExp() const { return exp; }
+	FORCEINLINE float GetEnergia() const { return energia; }
 	FORCEINLINE float Getpeso() const { return peso; }
 	FORCEINLINE float Getvolumen() const { return volumen; }
 
@@ -57,6 +59,8 @@ public:
 	FORCEINLINE void SetNombre(FString _nombre) { nombre = _nombre; }
 	FORCEINLINE void SetTiempoDisparo(float _tiempoDisparo) { tiempoDisparo = _tiempoDisparo; }
 	FORCEINLINE void SetPosicion(FVector _posicion) { posicion = _posicion; }
+	FORCEINLINE void SetExp(float _exp) { exp = _exp; }
+	FORCEINLINE void SetEnergia(float _energia) { energia = _energia; }
 	FORCEINLINE void Setpeso(float _peso) { peso = _peso; }
 	FORCEINLINE void Setvolumen(float _volumen) { volumen = _volumen; }
 
