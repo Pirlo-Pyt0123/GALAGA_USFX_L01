@@ -16,8 +16,8 @@ protected:
 	float recordActual;
 	FString playerName;
 
-
-
+	 
+	 
 public:
 
 	FORCEINLINE float GetRecordmaximo() const { return recordMaximo; }
