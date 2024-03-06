@@ -29,7 +29,7 @@ void AGALAGA_USFX_L01GameMode::BeginPlay()
 	UWorld* const World = GetWorld();
 	if (World != nullptr)
 	{
-		
+
 
 		NaveEnemiga01=World-> SpawnActor<ANaveEnemiga>(ubicacionNave, rotationNave);
 
