@@ -6,9 +6,7 @@
 #include "NaveEnemiga.h"
 #include "NaveEnemigaTransporte.generated.h"
 
-/**
- * 
- */
+
 UCLASS()
 class GALAGA_USFX_L01_API ANaveEnemigaTransporte : public ANaveEnemiga
 {
@@ -25,5 +23,10 @@ public:
 	FORCEINLINE void SetCapacidadCargaVolumen(float capacidad) { capacidadCargaVolumen = capacidad; }
     //creado
 
-
+protected:
+	ANaveEnemigaTransporte();
+	virtual void mover();
+	virtual void destruirse();
+	virtual void Disparar(bool bDisparar);
+	virtual void Escapar();
 };

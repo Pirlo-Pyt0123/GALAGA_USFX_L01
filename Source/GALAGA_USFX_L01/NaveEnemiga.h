@@ -6,10 +6,11 @@
 #include "GameFramework/Actor.h"
 #include "NaveEnemiga.generated.h"
 
-UCLASS()
+UCLASS(abstract)
 class GALAGA_USFX_L01_API ANaveEnemiga : public AActor
 {
 	GENERATED_BODY()
+
 public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = (AllowPrivateAccess = "true"))
@@ -20,15 +21,13 @@ protected:
 
 
 	float velocidad;
-	int velocity;
 	FString nombre;
-    int vida;
+	int vida;
 	float resistencia;
 	float tiempoDisparo;
 	float danoProducido;
 	FVector posicion;
 	int trayectoria;		//cada valor numerico representa a una funcion que la nave se mueva en dif posiciones 
-	//TMap<FVector, FString> trayectoria;
 	int capacidadPasajeros;
 	int capacidadMunicion;
 	int tipoNave;
@@ -36,7 +35,7 @@ protected:
 	float energia;
 	float peso;
 	float volumen;
-	
+
 
 
 
@@ -65,19 +64,25 @@ public:
 	FORCEINLINE void Setvolumen(float _volumen) { volumen = _volumen; }
 
 
-	
-	
-public:	
+
+
+public:
 	// Sets default values for this actor's properties
 	ANaveEnemiga();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	
 
-public:	
+
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+protected:
+	
+	void Mover() PURE_VIRTUAL(ANaveEnemiga::Mover, );
+	void Disparar(bool bDisparar) PURE_VIRTUAL(ANaveEnemiga::Disparar, );
+	void Destruirse() PURE_VIRTUAL(ANaveEnemiga::Destruirse, );
+	void Escapar() PURE_VIRTUAL(ANaveEnemiga::Escapar, );
 };

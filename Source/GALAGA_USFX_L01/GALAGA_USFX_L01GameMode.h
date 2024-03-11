@@ -1,24 +1,31 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #pragma once
-
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "GALAGA_USFX_L01GameMode.generated.h"
+#include "Galaga_USFX_L01GameMode.generated.h"
 
-class ANaveEnemiga;
+class ANaveEnemigaReabastecimiento;
+class ANaveEnemigaNodriza;
+class ANaveEnemigaTransporte;
+class AnaveEnemigaCaza;
+class ANaveEnemigaEspia;
 UCLASS(MinimalAPI)
-class AGALAGA_USFX_L01GameMode : public AGameModeBase
+class AGalaga_USFX_L01GameMode : public AGameModeBase
 {
 	GENERATED_BODY()
+	
 
 public:
-	AGALAGA_USFX_L01GameMode();
-public:
-	 ANaveEnemiga*NaveEnemiga01;
-	 ANaveEnemiga* NaveEnemigaCaza01;
-	 ANaveEnemiga* NaveEnemigaTransporte01;
+	AGalaga_USFX_L01GameMode();
 
+public:
+	//ANaveEnemiga* NaveEnemiga01;
+	ANaveEnemigaTransporte* NaveEnemigaTransporte01;
+	AnaveEnemigaCaza* NaveEnemigaCaza01;
+	ANaveEnemigaEspia* NaveEnemigaEspia01;
+	ANaveEnemigaNodriza* NaveEnemigaNodriza01;
+	ANaveEnemigaReabastecimiento* NaveEnemigaReabastecimiento01;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

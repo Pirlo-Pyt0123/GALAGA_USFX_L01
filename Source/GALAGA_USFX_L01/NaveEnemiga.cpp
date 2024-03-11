@@ -7,38 +7,36 @@
 // Sets default values
 ANaveEnemiga::ANaveEnemiga()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
+
+	//static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
 	// Create the mesh component
 	NaveEnemigaMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
-	NaveEnemigaMesh->SetStaticMesh(ShipMesh.Object);
+	//NaveEnemigaMesh->SetStaticMesh(ShipMesh.Object);
 	NaveEnemigaMesh->SetupAttachment(RootComponent);
 	RootComponent = NaveEnemigaMesh;
 
-	velocity = 3;
+
+
+
 
 }
 
-
-
-// Called when the game starts or when spawned
 void ANaveEnemiga::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
-// Called every frame
+
 void ANaveEnemiga::Tick(float DeltaTime)
 {
 
 	Super::Tick(DeltaTime);
-	this->AddActorLocalOffset(FVector( -velocity, 0, 0));
-
+	
 }
 
 

@@ -1,44 +1,52 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "GALAGA_USFX_L01GameMode.h"
+#include "Galaga_USFX_L01GameMode.h"
 #include "GALAGA_USFX_L01Pawn.h"
 #include "NaveEnemiga.h"
-#include "naveEnemigaCaza.h"
+#include "NaveEnemigaTransporte.h"
+#include "NaveEnemigaCaza.h"
+#include "NaveEnemigaEspia.h"
+#include "NaveEnemigaNodriza.h"
+#include "NaveEnemigaReabastecimiento.h"
 
-AGALAGA_USFX_L01GameMode::AGALAGA_USFX_L01GameMode()
+AGalaga_USFX_L01GameMode::AGalaga_USFX_L01GameMode()
 {
-	
-	// set default pawn class to our character class
-	DefaultPawnClass = AGALAGA_USFX_L01Pawn::StaticClass();
-	NaveEnemiga01 = nullptr;
+	 //set default pawn class to our character class
+	 DefaultPawnClass = AGALAGA_USFX_L01Pawn::StaticClass();
+	//NaveEnemiga01 = nullptr;
 }
 
-void AGALAGA_USFX_L01GameMode::BeginPlay()
+void AGalaga_USFX_L01GameMode::BeginPlay()
 {
 	Super::BeginPlay();
-	//nave principal
-	FVector ubicacionNave = FVector(0.0f, 50.0f,215.0f);
-	FRotator rotationNave = FRotator(0.0f, 0.0f, 0.0f);
-	//hijacaza
-	FVector ubicacionNaveEnemigaCaza = FVector(150.0f, 50.0f, 215.0f);
-	FRotator rotationNaveEnemigaCaza = FRotator(0.0f, 0.0f, 0.0f);
-	//hijatransporte
-	FVector ubicacionNaveEnemigaTransporte = FVector(270.0f, 50.0f, 215.0f);
-	FRotator rotationNaveEnemigaTransporte = FRotator(0.0f, 0.0f, 0.0f);
+	//Set the game state to playing
+
+	FVector ubicacionNave01 = FVector(850.0f, -700.0f, 250.0f);
+	FVector ubicacionNave02 = FVector(620.0f, 640.0f, 250.0f);
+	FVector ubicacionNave03 = FVector(600.0f, -700.0f, 250.0f);
+	FVector ubicacionNave04 = FVector(800.0f, 600.0f, 250.0f);
+	FVector ubicacionNave05 = FVector(410.0f, 660.0f, 250.0f);
+
+	FRotator rotacionNave = FRotator(0.0f, 0.0f, 0.0f);
 
 	UWorld* const World = GetWorld();
 	if (World != nullptr)
 	{
-
-
-		NaveEnemiga01=World-> SpawnActor<ANaveEnemiga>(ubicacionNave, rotationNave);
-
-		NaveEnemigaCaza01 = World->SpawnActor<ANaveEnemiga>(ubicacionNaveEnemigaCaza, rotationNaveEnemigaCaza);
-
-		NaveEnemigaTransporte01 = World->SpawnActor<ANaveEnemiga>(ubicacionNaveEnemigaTransporte, rotationNaveEnemigaTransporte);
+		// spawn the projectile
+		NaveEnemigaTransporte01 = World->SpawnActor<ANaveEnemigaTransporte>(ubicacionNave01, rotacionNave);
+		NaveEnemigaCaza01 = World->SpawnActor<AnaveEnemigaCaza>(ubicacionNave02, rotacionNave);
+		NaveEnemigaEspia01 = World->SpawnActor<ANaveEnemigaEspia>(ubicacionNave03, rotacionNave);
+		NaveEnemigaNodriza01 = World->SpawnActor<ANaveEnemigaNodriza>(ubicacionNave04, rotacionNave);
+		NaveEnemigaReabastecimiento01 = World->SpawnActor<ANaveEnemigaReabastecimiento>(ubicacionNave05, rotacionNave);
 	}
-	
 
-	NaveEnemiga01->SetPosicion(FVector(150.f, 0, 0));
+	NaveEnemigaTransporte01->SetPosicion(FVector(500.0f, -500.0f, 200.0f));
+	NaveEnemigaCaza01->SetPosicion(FVector(-500.0f, 500.0f, 200.0f));
+	NaveEnemigaEspia01->SetPosicion(FVector(-500.0f, 500.0f, 200.0f));
+	NaveEnemigaNodriza01->SetPosicion(FVector(-500.0f, 500.0f, 200.0f));
+	NaveEnemigaReabastecimiento01->SetPosicion(FVector(-500.0f, 500.0f, 200.0f));
 }
+
+
+
 
