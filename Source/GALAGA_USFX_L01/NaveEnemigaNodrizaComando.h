@@ -24,8 +24,13 @@ public:
 
 	FORCEINLINE void SetAgresividad(int _Agresividad) { Agresividad = _Agresividad; }
 
+
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
 protected:
-	virtual void Mover();
+	virtual void Mover(float DeltaTime)override;
 	virtual void destruirse();
 	virtual void Disparar(bool bAtacar);
 };

@@ -6,16 +6,35 @@
 
 AnaveEnemigaCaza::AnaveEnemigaCaza()
 {
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/EnemyLevel1.EnemyLevel1'"));
 	NaveEnemigaMesh->SetStaticMesh(ShipMesh.Object);
 
-
+    Velocity = 5;
 }
 
-//voids mamalones
-void AnaveEnemigaCaza::Mover()
+void AnaveEnemigaCaza::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);
+	Mover(DeltaTime);
+}
+  
+//voids mamalones
 
+
+void AnaveEnemigaCaza::Mover(float DeltaTime)
+{
+    // Obtiene la posición actual del actor
+    FVector PosicionActual = GetActorLocation();
+
+    // Genera un desplazamiento negativo en el eje X
+    float DesplazamientoX = GetVelocidad() *DeltaTime; // Ajusta la velocidad según lo necesario
+
+    // Establece la nueva posición con el desplazamiento en X y mantiene las coordenadas Y y Z
+    FVector NuevaPosicion = FVector(PosicionActual.X + DesplazamientoX, PosicionActual.Y, PosicionActual.Z);
+
+    
+    // Establece la nueva posición del actor
+    SetActorLocation(NuevaPosicion);
 }
 
 void AnaveEnemigaCaza::destruirse()

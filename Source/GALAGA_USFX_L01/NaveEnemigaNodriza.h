@@ -26,9 +26,13 @@ public:
 	FORCEINLINE void SetDureza(int _Dureza) { Dureza = _Dureza; }
 	FORCEINLINE void SetSensores(int _EscudoExtra) { EscudoExtra = _EscudoExtra; }
 
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 protected:
-	virtual void Mover();
+	virtual void Mover(float DeltaTime);
+
 	virtual void destruirse();
 	virtual void Disparar(bool bAtacar);
 

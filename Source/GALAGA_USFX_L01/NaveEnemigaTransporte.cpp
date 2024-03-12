@@ -5,17 +5,33 @@
 
 
 
+void ANaveEnemigaTransporte::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	Mover(DeltaTime);
+}
+
 ANaveEnemigaTransporte::ANaveEnemigaTransporte()
 {
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/EnemyLevel5.EnemyLevel5'"));
 	NaveEnemigaMesh->SetStaticMesh(ShipMesh.Object);
 	
 }
 
-void ANaveEnemigaTransporte::mover()
+void ANaveEnemigaTransporte::Mover(float DeltaTime)
 {
+	FVector PosicionActual = GetActorLocation();
 
+	// Genera un desplazamiento negativo en el eje X, pero con una velocidad más alta
+	float DesplazamientoX = -250.0f * DeltaTime; // Velocidad más alta que la clase base
+
+	// Establece la nueva posición con el desplazamiento en X y mantiene las coordenadas Y y Z
+	FVector NuevaPosicion = FVector(PosicionActual.X + DesplazamientoX, PosicionActual.Y, PosicionActual.Z);
+
+	// Establece la nueva posición del actor
+	SetActorLocation(NuevaPosicion);
 }
+
 
 void ANaveEnemigaTransporte::destruirse()
 {

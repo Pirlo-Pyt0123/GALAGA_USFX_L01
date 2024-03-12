@@ -16,7 +16,7 @@ class GALAGA_USFX_L01_API AnaveEnemigaCazaSigilosa : public AnaveEnemigaCaza
 	
 private:
 	int PoderSigilo;
-
+	float Velocity;
 public:
 
 	AnaveEnemigaCazaSigilosa();
@@ -25,8 +25,13 @@ public:
 
 	FORCEINLINE void SetPoderSigilo(int _PoderSigilo) { PoderSigilo = _PoderSigilo; }
 
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
 protected:
-	virtual void Mover();
+	virtual void Mover(float DeltaTime);
+
 	virtual void destruirse();
 	virtual void Escapar();
 };

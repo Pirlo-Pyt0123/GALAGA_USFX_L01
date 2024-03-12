@@ -22,8 +22,11 @@ public:
 
 	FORCEINLINE void SetCapacidadExtra(int _capacidadExtra) { capacidadExtra = _capacidadExtra; }
 
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 protected:
-	virtual void mover();
+	virtual void Mover(float DeltaTime)override;
 	virtual void destruirse();
 	virtual void Disparar(bool bDisparar);
 	virtual void Escapar();

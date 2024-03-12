@@ -24,7 +24,7 @@ public:
 	FORCEINLINE void SetTurbo(int _Turbo) { turbo = _Turbo; }
 
 protected:
-	virtual void Mover();
+	virtual void Mover(float DeltaTime)override;
 	virtual void destruirse();
 	virtual void Escapar();
 };

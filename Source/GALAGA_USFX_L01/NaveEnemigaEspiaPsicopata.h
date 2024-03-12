@@ -26,8 +26,13 @@ public:
     FORCEINLINE void SetFuria(int _furia) { furia = _furia; }
 	FORCEINLINE void SetLocura(int _Locura) { locura = _Locura; }
 
+
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 protected:
-	virtual void Mover();
+	virtual void Mover(float DeltaTime)override;
+
 	virtual void destruirse();
 	virtual void Disparar(bool bAtacar);
 };

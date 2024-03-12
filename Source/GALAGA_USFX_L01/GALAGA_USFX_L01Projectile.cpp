@@ -10,7 +10,7 @@
 AGALAGA_USFX_L01Projectile::AGALAGA_USFX_L01Projectile() 
 {
 	// Static reference to the mesh to use for the projectile
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> ProjectileMeshAsset(TEXT("/Game/TwinStick/Meshes/TwinStickProjectile.TwinStickProjectile"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ProjectileMeshAsset(TEXT("StaticMesh'/Game/TwinStick/Meshes/BulletEnemyLevel2.BulletEnemyLevel2'"));
 
 	// Create mesh component for the projectile sphere
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh0"));

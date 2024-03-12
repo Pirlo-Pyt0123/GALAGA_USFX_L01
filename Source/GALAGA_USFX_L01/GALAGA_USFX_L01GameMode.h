@@ -26,6 +26,23 @@ public:
 	ANaveEnemigaEspia* NaveEnemigaEspia01;
 	ANaveEnemigaNodriza* NaveEnemigaNodriza01;
 	ANaveEnemigaReabastecimiento* NaveEnemigaReabastecimiento01;
+	//Hijas Cazas
+	AnaveEnemigaCaza* NaveEnemigaCazaSigilosa01;
+	AnaveEnemigaCaza* NaveEnemigaCazaVeloz01;
+	//hijas Espia
+	ANaveEnemigaEspia* NaveEnemigaEspiaPsicopata01;
+	ANaveEnemigaEspia* NaveEnemigaEspiaSupremo01;
+	//hijas Nodriza 
+	ANaveEnemigaNodriza* NaveEnemigaNodrizaComando01;
+	ANaveEnemigaNodriza* NaveEnemigaNodrizaFabrica01;
+	//hijas Reabastecimiento
+	ANaveEnemigaReabastecimiento* NaveEnemigaReabastecimientoPeke01;
+	ANaveEnemigaReabastecimiento* NaveEnemigaReabastecimientoSupra01;
+	// hijas Transporte
+	ANaveEnemigaTransporte* NaveEnemigaTransporteDesplegable01;
+	ANaveEnemigaTransporte* NaveEnemigaTransporteInvisible01;
+
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

@@ -24,8 +24,13 @@ public:
 	FORCEINLINE void SetEscudoAdicional(int _EscudoAdicional) { EscudoAdicional = _EscudoAdicional; }
 	FORCEINLINE void SetSeguridad(int _Seguridad) { Seguridad = _Seguridad; }
 
+
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
 protected:
-	virtual void mover();
+	virtual void Mover(float DeltaTime);
 	virtual void destruirse();
 	virtual void Disparar(bool bDisparar);
 	virtual void Escapar();

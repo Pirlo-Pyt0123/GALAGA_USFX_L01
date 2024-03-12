@@ -22,8 +22,13 @@ public:
 	FORCEINLINE int GetBarraVida() const { return barraVida; }
 	FORCEINLINE void SetBarraVida(int _BarraVida) { barraVida = _BarraVida; }
 	
+
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 protected:
-	virtual void Mover();
+	virtual void Mover(float DeltaTime)override;
+
 	virtual void destruirse();
 	virtual void Disparar(bool bAtacar);
 	virtual void Escapar();

@@ -20,9 +20,12 @@ public:
 	FORCEINLINE int GetReparador() const { return reparador; }
 
 	FORCEINLINE void SetReparador(int _Reparador) { reparador = _Reparador; }
-
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 protected:
-	virtual void mover();
+	virtual void Mover(float DeltaTime)override;
+
 	virtual void destruirse();
 	virtual void Escapar();
 	void regaloRandom();

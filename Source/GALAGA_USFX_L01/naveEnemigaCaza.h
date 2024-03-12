@@ -15,7 +15,7 @@ class GALAGA_USFX_L01_API AnaveEnemigaCaza : public ANaveEnemiga
 {
 	GENERATED_BODY()
 private:
-
+	float Velocity;
 	int cantidadBombas;
 
 public:
@@ -24,10 +24,14 @@ public:
 	FORCEINLINE int GetCantidadBombas() const { return cantidadBombas; }
 	FORCEINLINE void SetCantidadBombas(int _cantidadBombas) { cantidadBombas = _cantidadBombas; }
 	
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 
 protected:
-	virtual void Mover();
+	virtual void Mover(float DeltaTime);
+
 	virtual void destruirse();
 	virtual void Escapar();
 

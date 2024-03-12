@@ -27,10 +27,13 @@ public:
 
 	FORCEINLINE void SetInvisibilidad(int _Invisibilidad) { Invisibilidad = _Invisibilidad; }
 	FORCEINLINE void SetSensores(int _Sensores) { Sensores = _Sensores; }
-
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 protected:
-	virtual void mover();
+	virtual void Mover(float DeltaTime);
+
 	virtual void destruirse();
 	virtual void Disparar(bool bDisparar);
 	virtual void Escapar();
