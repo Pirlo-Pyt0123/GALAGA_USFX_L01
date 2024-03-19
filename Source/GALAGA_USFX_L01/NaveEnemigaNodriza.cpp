@@ -2,7 +2,7 @@
 
 
 #include "NaveEnemigaNodriza.h"
-
+#include "Math/UnrealMathUtility.h" // Necesario para FMath
 ANaveEnemigaNodriza::ANaveEnemigaNodriza()
 {
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/EnemyLevel3.EnemyLevel3'"));
@@ -20,16 +20,8 @@ void ANaveEnemigaNodriza::Tick(float DeltaTime)
 
 void ANaveEnemigaNodriza::Mover(float DeltaTime)
 {
-    FVector PosicionActual = GetActorLocation();
 
-    // Genera un desplazamiento negativo en el eje X, pero con una velocidad más alta
-    float DesplazamientoX = -100.0f * DeltaTime; // Velocidad más alta que la clase base
-
-    // Establece la nueva posición con el desplazamiento en X y mantiene las coordenadas Y y Z
-    FVector NuevaPosicion = FVector(PosicionActual.X + DesplazamientoX, PosicionActual.Y, PosicionActual.Z);
-
-    // Establece la nueva posición del actor
-    SetActorLocation(NuevaPosicion);
+    
 }
 
 void ANaveEnemigaNodriza::destruirse()

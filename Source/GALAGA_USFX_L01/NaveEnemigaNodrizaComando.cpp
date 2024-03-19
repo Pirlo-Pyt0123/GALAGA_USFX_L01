@@ -18,21 +18,24 @@ void ANaveEnemigaNodrizaComando::Tick(float DeltaTime)
 
 void ANaveEnemigaNodrizaComando::Mover(float DeltaTime)
 {
-	// Obtiene la posición actual del actor
-	FVector PosicionActual = GetActorLocation();
+	ANaveEnemigaNodriza::Mover(DeltaTime);
+	speed = 3;
+	SetActorLocation(FVector(GetActorLocation().X - speed, GetActorLocation().Y - speed * bandera, GetActorLocation().Z));
+	if (GetActorLocation().Y < -1200 || GetActorLocation().Y > -800) {
+		bandera *= -1;
+	}
+	if (GetActorLocation().X < -1800) {
+		SetActorLocation(FVector(posicion));
+		SetActorLocation(FVector(1200, -1000, 250));
 
-	// Genera un desplazamiento negativo en el eje X
-	float DesplazamientoX = GetVelocidad() * DeltaTime; // Ajusta la velocidad según lo necesario
-
-	// Establece la nueva posición con el desplazamiento en X y mantiene las coordenadas Y y Z
-	FVector NuevaPosicion = FVector(PosicionActual.X + DesplazamientoX, PosicionActual.Y, PosicionActual.Z);
-
-	// Establece la nueva posición del actor
-	SetActorLocation(NuevaPosicion);
+	}
 }
 
 void ANaveEnemigaNodrizaComando::destruirse()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("NaveEnemigaNodrizaComando destruida"));
+	Destroy();
+	
 
 }
 

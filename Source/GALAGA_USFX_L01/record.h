@@ -12,9 +12,12 @@ class GALAGA_USFX_L01_API Arecord : public AActor
 	GENERATED_BODY()
 
 protected:
+	// Called when the game starts or when spawned
 	float recordMaximo;
 	float recordActual;
 	FString playerName;
+
+	
 
 	 
 	 

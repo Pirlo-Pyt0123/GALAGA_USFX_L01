@@ -16,7 +16,7 @@ class GALAGA_USFX_L01_API ANaveEnemigaEspiaSupremo : public ANaveEnemigaEspia
 	
 private:
 	float barraVida;
-
+	int bandera = 1;
 public:
 	ANaveEnemigaEspiaSupremo();
 	FORCEINLINE int GetBarraVida() const { return barraVida; }

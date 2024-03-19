@@ -17,25 +17,29 @@ void ANaveEnemigaNodrizaFabrica::Tick(float DeltaTime)
 
 void ANaveEnemigaNodrizaFabrica::Mover(float DeltaTime)
 {
-	// Obtiene la posición actual del actor
-	FVector PosicionActual = GetActorLocation();
+	ANaveEnemigaNodriza::Mover(DeltaTime);
+	if (ban) {
+		posicionmov = rand() % 1600;
+		ban = false;
+	}
 
-	// Genera un desplazamiento negativo en el eje X
-	float DesplazamientoX = GetVelocidad() * DeltaTime; // Ajusta la velocidad según lo necesario
+	else {
+		if (posicionmov > GetActorLocation().Y) {
+			SetActorLocation(FVector(GetActorLocation().X, GetActorLocation().Y + 1, GetActorLocation().Z));
+		}
+		else if (posicionmov < GetActorLocation().Y) {
+			SetActorLocation(FVector(GetActorLocation().X, GetActorLocation().Y - 1, GetActorLocation().Z));
+		}
+		else {
+			ban = true;
+		}
 
-	// Establece la nueva posición con el desplazamiento en X y mantiene las coordenadas Y y Z
-	FVector NuevaPosicion = FVector(PosicionActual.X + DesplazamientoX, PosicionActual.Y, PosicionActual.Z);
+	}
 
-	// Establece la nueva posición del actor
-	SetActorLocation(NuevaPosicion);
+
 }
 
 void ANaveEnemigaNodrizaFabrica::destruirse()
-{
-
-}
-
-void ANaveEnemigaNodrizaFabrica::Disparar(bool bDisparar)
 {
 
 }

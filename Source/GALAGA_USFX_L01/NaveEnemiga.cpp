@@ -11,7 +11,7 @@ ANaveEnemiga::ANaveEnemiga()
 	PrimaryActorTick.bCanEverTick = true;
 
 
-
+	
 	//static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
 	// Create the mesh component
 	NaveEnemigaMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
@@ -28,7 +28,7 @@ ANaveEnemiga::ANaveEnemiga()
 void ANaveEnemiga::BeginPlay()
 {
 	Super::BeginPlay();
-
+	posicion = GetActorLocation();
 }
 
 

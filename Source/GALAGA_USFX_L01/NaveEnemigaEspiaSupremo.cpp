@@ -5,6 +5,7 @@
 
 ANaveEnemigaEspiaSupremo::ANaveEnemigaEspiaSupremo()
 {
+	posicion = FVector(1200, -1000, 250);
 
 }
 
@@ -18,17 +19,22 @@ void ANaveEnemigaEspiaSupremo::Tick(float DeltaTime)
 
 void ANaveEnemigaEspiaSupremo::Mover(float DeltaTime)
 {
-	// Obtiene la posición actual del actor
-	FVector PosicionActual = GetActorLocation();
+	ANaveEnemigaEspia::Mover(DeltaTime);
+	bandera++;
+	if (bandera < 300 && bandera >0) {
 
-	// Genera un desplazamiento negativo en el eje X
-	float DesplazamientoX = GetVelocidad() * DeltaTime; // Ajusta la velocidad según lo necesario
+		SetActorLocation(FVector(GetActorLocation().X + GetSpeed(), GetActorLocation().Y, GetActorLocation().Z));
+	}
+	else if (bandera > 300) {
+		bandera = -100;
+	}
+	else {
+		SetActorLocation(FVector(GetActorLocation().X, GetActorLocation().Y + GetSpeed(), GetActorLocation().Z));
+	}
 
-	// Establece la nueva posición con el desplazamiento en X y mantiene las coordenadas Y y Z
-	FVector NuevaPosicion = FVector(PosicionActual.X + DesplazamientoX, PosicionActual.Y, PosicionActual.Z);
-
-	// Establece la nueva posición del actor
-	SetActorLocation(NuevaPosicion);
+	if (GetActorLocation().X < -1800) {
+		SetActorLocation(FVector(posicion));
+	}
 }
 
 void ANaveEnemigaEspiaSupremo::destruirse()

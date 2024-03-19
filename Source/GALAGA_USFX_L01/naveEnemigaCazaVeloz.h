@@ -16,7 +16,7 @@ class GALAGA_USFX_L01_API AnaveEnemigaCazaVeloz : public AnaveEnemigaCaza
 	
 private:
 	int turbo;
-
+	int bandera = 1;
 public:
 	AnaveEnemigaCazaVeloz();
 	FORCEINLINE int GetTurbo() const { return turbo; }

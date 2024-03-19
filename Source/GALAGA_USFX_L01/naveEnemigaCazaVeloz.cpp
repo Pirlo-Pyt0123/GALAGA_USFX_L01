@@ -5,8 +5,14 @@
 
 AnaveEnemigaCazaVeloz::AnaveEnemigaCazaVeloz()
 {
-    
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/IAaseet/fdd447e732b5_crea_una_nave_muy_a.fdd447e732b5_crea_una_nave_muy_a'"));
+	NaveEnemigaMesh->SetStaticMesh(ShipMesh.Object);
+
+	posicion = FVector(1200, -1000, 250);
+	
 }
+
+
 
 
 
@@ -14,24 +20,21 @@ AnaveEnemigaCazaVeloz::AnaveEnemigaCazaVeloz()
 
 void AnaveEnemigaCazaVeloz::Mover(float DeltaTime)
 {
-  
-        // Obtiene la posición actual del actor
-        FVector PosicionActual = GetActorLocation();
+	AnaveEnemigaCaza::Mover(DeltaTime);
+	speed = 3;
+	SetActorLocation(FVector(GetActorLocation().X - speed, GetActorLocation().Y + speed * bandera, GetActorLocation().Z));
+	if (GetActorLocation().Y < -1000 || GetActorLocation().Y > -600) {
+		bandera *= -1;
 
-        // Genera un desplazamiento negativo en el eje X
-        float DesplazamientoX = GetVelocidad()* DeltaTime; // Ajusta la velocidad según lo necesario
-
-        // Establece la nueva posición con el desplazamiento en X y mantiene las coordenadas Y y Z
-        FVector NuevaPosicion = FVector(PosicionActual.X + DesplazamientoX, PosicionActual.Y, PosicionActual.Z);
-
-        // Establece la nueva posición del actor
-        SetActorLocation(NuevaPosicion);
-   
+	}
+	if (GetActorLocation().X < -1800) {
+		SetActorLocation(FVector(posicion));
+	}
 }
 
 void AnaveEnemigaCazaVeloz::destruirse()
 {
-
+	
 }
 
 

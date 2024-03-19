@@ -15,6 +15,7 @@ class GALAGA_USFX_L01_API ANaveEnemigaEspia : public ANaveEnemiga
 	GENERATED_BODY()
 	
 private:
+	
 	int Invisibilidad;
 	int Sensores;
 	

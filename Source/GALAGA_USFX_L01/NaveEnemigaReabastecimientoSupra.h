@@ -14,15 +14,17 @@ class GALAGA_USFX_L01_API ANaveEnemigaReabastecimientoSupra : public ANaveEnemig
 	
 private:
 	float tamanoAumentado;
-
+	int bandera = 1;
+	
 public:
+	virtual void Tick(float DeltaTime)override;
 	ANaveEnemigaReabastecimientoSupra();
 	FORCEINLINE int GetTamanoAumentado() const { return tamanoAumentado; }
 
 	FORCEINLINE void SetTamanoAumentado(int _tamanoAumentado) { tamanoAumentado = _tamanoAumentado; }
 
 protected:
-	virtual void mover();
+	virtual void Mover(float DeltaTime)override;
 	virtual void destruirse();
 	virtual void Escapar();
 	void repara();

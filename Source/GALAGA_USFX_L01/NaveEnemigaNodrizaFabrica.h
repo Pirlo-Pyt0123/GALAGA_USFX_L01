@@ -14,6 +14,8 @@ class GALAGA_USFX_L01_API ANaveEnemigaNodrizaFabrica : public ANaveEnemigaNodriz
 	
 private:
 	float capacidadExtra;
+	bool ban = true;
+	int posicionmov;
 
 public:
 	ANaveEnemigaNodrizaFabrica();
@@ -28,7 +30,7 @@ public:
 protected:
 	virtual void Mover(float DeltaTime)override;
 	virtual void destruirse();
-	virtual void Disparar(bool bDisparar);
+	
 	virtual void Escapar();
 	void generarNaves();
 };

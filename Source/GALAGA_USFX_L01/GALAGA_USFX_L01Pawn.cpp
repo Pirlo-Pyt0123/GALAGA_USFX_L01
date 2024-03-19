@@ -28,7 +28,7 @@ AGALAGA_USFX_L01Pawn::AGALAGA_USFX_L01Pawn()
 	ShipMeshComponent->SetStaticMesh(ShipMesh.Object);
 	
 	// Cache our sound effect
-	static ConstructorHelpers::FObjectFinder<USoundBase> FireAudio(TEXT("/Game/TwinStick/Audio/TwinStickFire.TwinStickFire"));
+	static ConstructorHelpers::FObjectFinder<USoundBase> FireAudio(TEXT("SoundWave'/Game/TwinStick/Audio/laser.laser'"));
 	FireSound = FireAudio.Object;
 
 	// Create a camera boom...

@@ -14,7 +14,8 @@ class GALAGA_USFX_L01_API ANaveEnemigaReabastecimientoPeke : public ANaveEnemiga
 	
 private:
 	int reparador;
-
+	int bandera = 1;
+	FVector coordenadasNave;
 public:
 	ANaveEnemigaReabastecimientoPeke();
 	FORCEINLINE int GetReparador() const { return reparador; }

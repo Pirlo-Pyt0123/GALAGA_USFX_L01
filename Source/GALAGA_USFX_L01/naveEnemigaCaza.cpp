@@ -9,7 +9,7 @@ AnaveEnemigaCaza::AnaveEnemigaCaza()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/EnemyLevel1.EnemyLevel1'"));
 	NaveEnemigaMesh->SetStaticMesh(ShipMesh.Object);
 
-    Velocity = 5;
+    PrimaryActorTick.bCanEverTick = true;
 }
 
 void AnaveEnemigaCaza::Tick(float DeltaTime)
@@ -23,18 +23,9 @@ void AnaveEnemigaCaza::Tick(float DeltaTime)
 
 void AnaveEnemigaCaza::Mover(float DeltaTime)
 {
-    // Obtiene la posición actual del actor
-    FVector PosicionActual = GetActorLocation();
+	speed = 1;
+	SetActorLocation(FVector(GetActorLocation().X - speed, GetActorLocation().Y, GetActorLocation().Z));
 
-    // Genera un desplazamiento negativo en el eje X
-    float DesplazamientoX = GetVelocidad() *DeltaTime; // Ajusta la velocidad según lo necesario
-
-    // Establece la nueva posición con el desplazamiento en X y mantiene las coordenadas Y y Z
-    FVector NuevaPosicion = FVector(PosicionActual.X + DesplazamientoX, PosicionActual.Y, PosicionActual.Z);
-
-    
-    // Establece la nueva posición del actor
-    SetActorLocation(NuevaPosicion);
 }
 
 void AnaveEnemigaCaza::destruirse()

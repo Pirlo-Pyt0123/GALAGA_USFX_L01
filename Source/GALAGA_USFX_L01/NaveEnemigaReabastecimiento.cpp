@@ -20,16 +20,18 @@ void ANaveEnemigaReabastecimiento::Tick(float DeltaTime)
 
 void ANaveEnemigaReabastecimiento::Mover(float DeltaTime)
 {
-	FVector PosicionActual = GetActorLocation();
+	//ector PosicionActual = GetActorLocation();
 
 	// Genera un desplazamiento negativo en el eje X, pero con una velocidad más alta
-	float DesplazamientoX = GetVelocidad()* DeltaTime; // Velocidad más alta que la clase base
+//loat DesplazamientoX = GetVelocidad()* DeltaTime; // Velocidad más alta que la clase base
 
 	// Establece la nueva posición con el desplazamiento en X y mantiene las coordenadas Y y Z
-	FVector NuevaPosicion = FVector(PosicionActual.X + DesplazamientoX, PosicionActual.Y, PosicionActual.Z);
+	//ector NuevaPosicion = FVector(PosicionActual.X + DesplazamientoX, PosicionActual.Y, PosicionActual.Z);
 
 	// Establece la nueva posición del actor
-	SetActorLocation(NuevaPosicion);
+//etActorLocation(NuevaPosicion);
+
+
 }
 
 void ANaveEnemigaReabastecimiento::destruirse()

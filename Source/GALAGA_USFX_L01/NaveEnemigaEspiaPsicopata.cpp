@@ -5,7 +5,10 @@
 
 ANaveEnemigaEspiaPsicopata::ANaveEnemigaEspiaPsicopata()
 {
-
+	posicion = FVector(1200, -1000, 250);
+	posicion = FVector(1200, 1000, 250);
+	float xc=200,yc=50,zc=250;
+	
 }
 
 
@@ -14,29 +17,49 @@ void ANaveEnemigaEspiaPsicopata::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	Mover(DeltaTime);
+
 }
 
 void ANaveEnemigaEspiaPsicopata::Mover(float DeltaTime)
 {
-    // Obtiene la posición actual del actor
-    FVector PosicionActual = GetActorLocation();
+	ANaveEnemigaEspia::Mover(DeltaTime);
+	bandera++;
+	if (bandera < 300 && bandera >0) {
 
-    // Genera un desplazamiento negativo en el eje X
-    float DesplazamientoX = GetVelocidad() * DeltaTime; // Ajusta la velocidad según lo necesario
+		SetActorLocation(FVector(GetActorLocation().X + GetSpeed(), GetActorLocation().Y, GetActorLocation().Z));
+	}
+	else if (bandera > 300) {
+		bandera = -100;
+	}
+	else {
+		SetActorLocation(FVector(GetActorLocation().X, GetActorLocation().Y + GetSpeed(), GetActorLocation().Z));
+	}
 
-    // Establece la nueva posición con el desplazamiento en X y mantiene las coordenadas Y y Z
-    FVector NuevaPosicion = FVector(PosicionActual.X + DesplazamientoX, PosicionActual.Y, PosicionActual.Z);
+	if (GetActorLocation().X < -1800) {
 
-    // Establece la nueva posición del actor
-    SetActorLocation(NuevaPosicion);
+		SetActorLocation(FVector(posicion));
+
+	}
+	
 }
 
 void ANaveEnemigaEspiaPsicopata::destruirse()
 {
+	ANaveEnemigaEspia::destruirse();
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("NaveEnemigaEspiaPsicopata destruida"));
+	Destroy();
 
 }
 
 void ANaveEnemigaEspiaPsicopata::Disparar(bool bAtacar)
 {
+	 ANaveEnemigaEspia::Disparar(bAtacar);
+	if (bAtacar) {
+		
+		
+	}
+	else {
+		
 
+	}
 }

@@ -15,7 +15,7 @@ class GALAGA_USFX_L01_API ANaveEnemigaNodrizaComando : public ANaveEnemigaNodriz
 	GENERATED_BODY()
 private:
 	int Agresividad;
-
+	int bandera = 1;
 public:
 
 	ANaveEnemigaNodrizaComando();

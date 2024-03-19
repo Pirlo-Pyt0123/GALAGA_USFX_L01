@@ -16,17 +16,16 @@ void ANaveEnemigaReabastecimientoPeke::Tick(float DeltaTime)
 
 void ANaveEnemigaReabastecimientoPeke::Mover(float DeltaTime)
 {
-	// Obtiene la posición actual del actor
-	FVector PosicionActual = GetActorLocation();
-
-	// Genera un desplazamiento negativo en el eje X
-	float DesplazamientoX = GetVelocidad() * DeltaTime; // Ajusta la velocidad según lo necesario
-
-	// Establece la nueva posición con el desplazamiento en X y mantiene las coordenadas Y y Z
-	FVector NuevaPosicion = FVector(PosicionActual.X + DesplazamientoX, PosicionActual.Y, PosicionActual.Z);
-
-	// Establece la nueva posición del actor
-	SetActorLocation(NuevaPosicion);
+	ANaveEnemigaReabastecimiento::Mover(DeltaTime);
+	SetActorLocation(FVector(GetActorLocation().X - 2, GetActorLocation().Y, GetActorLocation().Z));
+	SetActorRotation(FRotator(bandera, 90, 90));
+	if (bandera >= 360) {
+		bandera = 0;
+	}
+	bandera++;
+	if (GetActorLocation().X < -1800) {
+		SetActorLocation(FVector(1200, -1000 + 600, 250.0f));
+	}
 }
 
 
