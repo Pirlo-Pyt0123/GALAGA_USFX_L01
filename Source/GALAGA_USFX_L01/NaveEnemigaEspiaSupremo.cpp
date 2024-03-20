@@ -5,7 +5,7 @@
 
 ANaveEnemigaEspiaSupremo::ANaveEnemigaEspiaSupremo()
 {
-	posicion = FVector(1200, -1000, 250);
+	posicion = GetActorLocation();
 
 }
 

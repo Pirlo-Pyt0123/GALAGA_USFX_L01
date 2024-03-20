@@ -11,7 +11,7 @@ void ANaveEnemigaTransporteDesplegable::Tick(float DeltaTime)
 
 ANaveEnemigaTransporteDesplegable::ANaveEnemigaTransporteDesplegable()
 {
-	posicion = FVector(1200, -1000, 250);
+	posicion = GetActorLocation();
 }
 
 
@@ -30,7 +30,6 @@ void ANaveEnemigaTransporteDesplegable::mover(float DeltaTime)
 		}
 		if (GetActorLocation().X < -1800) {
 			SetActorLocation(FVector(posicion));
-			SetActorLocation(FVector(1200, -1000, 250));
 		}
 		
 }

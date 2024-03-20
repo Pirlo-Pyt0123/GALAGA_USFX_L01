@@ -16,7 +16,7 @@ protected:
 	float recordMaximo;
 	float recordActual;
 	FString playerName;
-
+	float insertarVida;
 	
 
 	 
@@ -26,12 +26,12 @@ public:
 	FORCEINLINE float GetRecordmaximo() const { return recordMaximo; }
 	FORCEINLINE float GetRecordactual() const { return recordActual; }
 	FORCEINLINE FString GetPlayername() const { return playerName; }
-
+	FORCEINLINE float GetInsertarVida() const { return insertarVida; }	
 
 	FORCEINLINE void SetRecordmaximo(float _recordmaximo) { recordMaximo = _recordmaximo; }
 	FORCEINLINE void SetRecordactual(float _recordactual) { recordActual = _recordactual; }
 	FORCEINLINE void SetPlayername(FString _nombre) { playerName = _nombre; }
-
+	FORCEINLINE void SetInsertarVida(float _insertarVida) { insertarVida = _insertarVida; }
 public:	
 	// Sets default values for this actor's properties
 	Arecord();

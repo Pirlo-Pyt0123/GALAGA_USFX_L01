@@ -5,7 +5,14 @@
 
 ANaveEnemigaNodrizaFabrica::ANaveEnemigaNodrizaFabrica()
 {
+	GetActorRelativeScale3D();
+	//aumenta el tamano de la nave
+	SetActorScale3D(FVector(2, 2, 2));
+	posicion = GetActorLocation();
 
+
+
+ 
 }
 
 

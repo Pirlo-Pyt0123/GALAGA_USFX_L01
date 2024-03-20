@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
 #include "Galaga_USFX_L01GameMode.generated.h"
+class ALogros;
 class ANaveEnemiga;
 class ANaveEnemigaCazaVeloz;
 class ANaveEnemigaReabastecimiento;
@@ -23,6 +24,13 @@ public:
 	AGalaga_USFX_L01GameMode();
 
 public:
+
+
+
+	UPROPERTY(EditAnywhere)
+	int escudo = 2;
+
+
 	//ANaveEnemiga* NaveEnemiga01;
 	ANaveEnemigaTransporte* NaveEnemigaTransporte01;
 	//AnaveEnemigaCaza* NaveEnemigaCaza01;
@@ -49,14 +57,21 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
+	
 
 
 private:
-	TArray<AnaveEnemigaCaza* >TAnavesEnemigasCaza;
-	TArray<ANaveEnemigaTransporte* >TAnavesEnemigasTrasnporte;
-	TArray<ANaveEnemigaEspia* >TAnavesEnemigasEspia;
-	TArray<ANaveEnemigaReabastecimiento* >TAnavesEnemigasReabastecimiento;
-	TArray<ANaveEnemigaNodriza* >TAnavesEnemigasNodriza;
-	TMap<int32, AActor*> NavesEnemigas;
-	
+
+	int TiempoTranscurrido;
+
+	ALogros* logro1;
+
+
+	//TArray<AnaveEnemigaCaza* >TAnavesEnemigasCaza;
+	//TArray<ANaveEnemigaTransporte* >TAnavesEnemigasTrasnporte;
+	//TArray<ANaveEnemigaEspia* >TAnavesEnemigasEspia;
+	//TArray<ANaveEnemigaReabastecimiento* >TAnavesEnemigasReabastecimiento;
+	//TArray<ANaveEnemigaNodriza* >TAnavesEnemigasNodriza;
+	TArray<ANaveEnemiga*> TANaveEnemigamulti;
+
 };

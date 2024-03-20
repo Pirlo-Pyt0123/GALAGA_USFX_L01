@@ -20,6 +20,9 @@ private:
 	float furia;
 	float locura;
 	ANaveEnemigaEspia* disparo;
+	float FireRate;
+	FVector GunOffset;
+	uint32 bCanFire : 1;
 
 public:
 	ANaveEnemigaEspiaPsicopata();
@@ -36,6 +39,8 @@ public:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	void FireShot(FVector FireDirection);
+
 protected:
 	virtual void Mover(float DeltaTime)override;
 

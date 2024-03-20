@@ -18,6 +18,7 @@
 #include "NaveEnemigaNodrizaFabrica.h"
 #include "NaveEnemigaReabastecimientoPeke.h"
 #include "NaveEnemigaReabastecimientoSupra.h"
+#include "Logros.h"
 
 AGalaga_USFX_L01GameMode::AGalaga_USFX_L01GameMode()
 {
@@ -61,49 +62,114 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 	if (World != nullptr)
 	{
 
+		logro1 = World->SpawnActor<ALogros>(FVector(200, 200, 250), FRotator(0, 0, 0));
+
+		logro1->ModificarVida("escudo", escudo);
+
+
+
+
 		// spawn the projectile
 		//NaveEnemigaCaza01 = World->SpawnActor<AnaveEnemigaCaza>(FVector(200, 200, 250), rotacionNave);
-		NaveEnemigaCazaSigilosa01 = World->SpawnActor<AnaveEnemigaCazaSigilosa>(ubicacionNave01, rotacionNave);
-		NaveEnemigaCazaVeloz01 = World->SpawnActor<AnaveEnemigaCazaVeloz>(ubicacionNave02, rotacionNave);
-		NaveEnemigaTransporteDesplegable01 = World->SpawnActor<ANaveEnemigaTransporteDesplegable>(ubicacionNave03, rotacionNave);
-		NaveEnemigaTransporteInvisible01 = World->SpawnActor<ANaveEnemigaTransporteInvisible>(ubicacionNave04, rotacionNave);
-		NaveEnemigaEspiaPsicopata01 = World->SpawnActor<ANaveEnemigaEspiaPsicopata>(ubicacionNave05, rotacionNave);
-		NaveEnemigaEspiaSupremo01 = World->SpawnActor<ANaveEnemigaEspiaSupremo>(ubicacionNave06, rotacionNave);
-		NaveEnemigaReabastecimientoPeke01 = World->SpawnActor<ANaveEnemigaReabastecimientoPeke>(ubicacionNave07, rotacionNave);
-		NaveEnemigaReabastecimientoSupra01 = World->SpawnActor<ANaveEnemigaReabastecimientoSupra>(ubicacionNave08, rotacionNave);
-		NaveEnemigaNodrizaComando01 = World->SpawnActor<ANaveEnemigaNodrizaComando>(ubicacionNave09, rotacionNave);
-		NaveEnemigaNodrizaFabrica01 = World->SpawnActor<ANaveEnemigaNodrizaFabrica>(ubicacionNave10, rotacionNave);
+		//NaveEnemigaCazaSigilosa01 = World->SpawnActor<AnaveEnemigaCazaSigilosa>(ubicacionNave01, rotacionNave);
+		//NaveEnemigaCazaVeloz01 = World->SpawnActor<AnaveEnemigaCazaVeloz>(ubicacionNave02, rotacionNave);
+		//NaveEnemigaTransporteDesplegable01 = World->SpawnActor<ANaveEnemigaTransporteDesplegable>(ubicacionNave03, rotacionNave);
+		//NaveEnemigaTransporteInvisible01 = World->SpawnActor<ANaveEnemigaTransporteInvisible>(ubicacionNave04, rotacionNave);
+		//NaveEnemigaEspiaPsicopata01 = World->SpawnActor<ANaveEnemigaEspiaPsicopata>(ubicacionNave05, rotacionNave);
+		//NaveEnemigaEspiaSupremo01 = World->SpawnActor<ANaveEnemigaEspiaSupremo>(ubicacionNave06, rotacionNave);
+		//NaveEnemigaReabastecimientoPeke01 = World->SpawnActor<ANaveEnemigaReabastecimientoPeke>(ubicacionNave07, rotacionNave);
+		//NaveEnemigaReabastecimientoSupra01 = World->SpawnActor<ANaveEnemigaReabastecimientoSupra>(ubicacionNave08, rotacionNave);
+		//NaveEnemigaNodrizaComando01 = World->SpawnActor<ANaveEnemigaNodrizaComando>(ubicacionNave09, rotacionNave);
+		//NaveEnemigaNodrizaFabrica01 = World->SpawnActor<ANaveEnemigaNodrizaFabrica>(ubicacionNave10, rotacionNave);
 		//AnaveEnemigaCaza* NaveEnemigaTemporal = World->SpawnActor<AnaveEnemigaCaza>(FVector(200, 200, 250), rotacionNave);
 
 
 
 
-		float  xc = 200, yc = 120, zc = 250;
+		//float  xc = 200, yc = 120, zc = 250;
 
-		for (int i = 0; i < 5; i++) {
-
+		
 
 			//AnaveEnemigaCazaVeloz* NaveEnemigaTemporal01 = World->SpawnActor<AnaveEnemigaCazaVeloz>(FVector(xc, yc, zc), rotacionNave);
 			//TAnavesEnemigasCaza.Push(NaveEnemigaTemporal01);
-			AnaveEnemigaCazaSigilosa* NaveEnemigaTemporal02 = World->SpawnActor<AnaveEnemigaCazaSigilosa>(FVector(xc, yc * -4, zc), rotacionNave);
-			TAnavesEnemigasCaza.Push(NaveEnemigaTemporal02);
-			ANaveEnemigaEspiaPsicopata* NaveEnemigaTemporal03 = World->SpawnActor<ANaveEnemigaEspiaPsicopata>(FVector(xc, yc * -2, zc), rotacionNave);
-			TAnavesEnemigasEspia.Push(NaveEnemigaTemporal03);
-			ANaveEnemigaEspiaSupremo* NaveEnemigaTemporal04 = World->SpawnActor<ANaveEnemigaEspiaSupremo>(FVector(xc, yc * 2, zc), rotacionNave);
-			TAnavesEnemigasEspia.Push(NaveEnemigaTemporal04);
-			ANaveEnemigaReabastecimientoPeke* NaveEnemigaTemporal05 = World->SpawnActor<ANaveEnemigaReabastecimientoPeke>(FVector(xc, yc * 4, zc), rotacionNave);
-			TAnavesEnemigasReabastecimiento.Push(NaveEnemigaTemporal05);
-			ANaveEnemigaReabastecimientoSupra* NaveEnemigaTemporal06 = World->SpawnActor<ANaveEnemigaReabastecimientoSupra>(FVector(xc, yc * 5, zc), rotacionNave);
-			TAnavesEnemigasReabastecimiento.Push(NaveEnemigaTemporal06);
-			ANaveEnemigaNodrizaComando* NaveEnemigaTemporal07 = World->SpawnActor<ANaveEnemigaNodrizaComando>(FVector(xc, yc * 6, zc), rotacionNave);
-			TAnavesEnemigasNodriza.Push(NaveEnemigaTemporal07);
-			yc += 80;
+			//AnaveEnemigaCazaSigilosa* NaveEnemigaTemporal02 = World->SpawnActor<AnaveEnemigaCazaSigilosa>(FVector(xc, yc * -4, zc), rotacionNave);
+			//TAnavesEnemigasCaza.Push(NaveEnemigaTemporal02);
+			//ANaveEnemigaEspiaPsicopata* NaveEnemigaTemporal03 = World->SpawnActor<ANaveEnemigaEspiaPsicopata>(FVector(xc, yc * -2, zc), rotacionNave);
+			//TAnavesEnemigasEspia.Push(NaveEnemigaTemporal03);
+			//ANaveEnemigaEspiaSupremo* NaveEnemigaTemporal04 = World->SpawnActor<ANaveEnemigaEspiaSupremo>(FVector(xc, yc * 2, zc), rotacionNave);
+			//TAnavesEnemigasEspia.Push(NaveEnemigaTemporal04);
+			//ANaveEnemigaReabastecimientoPeke* NaveEnemigaTemporal05 = World->SpawnActor<ANaveEnemigaReabastecimientoPeke>(FVector(xc, yc * 4, zc), rotacionNave);
+			//TAnavesEnemigasReabastecimiento.Push(NaveEnemigaTemporal05);
+			//ANaveEnemigaReabastecimientoSupra* NaveEnemigaTemporal06 = World->SpawnActor<ANaveEnemigaReabastecimientoSupra>(FVector(xc, yc * 5, zc), rotacionNave);
+			//TAnavesEnemigasReabastecimiento.Push(NaveEnemigaTemporal06);
+			//ANaveEnemigaNodrizaComando* NaveEnemigaTemporal07 = World->SpawnActor<ANaveEnemigaNodrizaComando>(FVector(xc, yc * 6, zc), rotacionNave);
+			//TAnavesEnemigasNodriza.Push(NaveEnemigaTemporal07);
+			//yc += 80;
 
+			AnaveEnemigaCazaVeloz* NaveEnemigaTAlfa;
+			AnaveEnemigaCazaSigilosa* NaveEnemigaTDelta;
+			ANaveEnemigaTransporteDesplegable* NaveEnemigaTLigero;
+			ANaveEnemigaTransporteInvisible* NaveEnemigaTPesado;
+			ANaveEnemigaEspiaPsicopata* NaveEnemigaTScout;
+			ANaveEnemigaEspiaSupremo* NaveEnemigaTCentral;
+			ANaveEnemigaNodrizaComando* NaveEnemigaTMadre;
+			ANaveEnemigaNodrizaFabrica* NaveEnemigaTWar;
+			ANaveEnemigaReabastecimientoPeke* NaveEnemigaTFuel;
+			ANaveEnemigaReabastecimientoSupra* NaveEnemigaTBoms;
 
+		
 
-		}
+		
+			int tipNave = 0;
+			for (int i = 0; i < 30; i++) {
+				tipNave = rand() % 9;
+				FVector posicionNave = FVector(rand() % 1000, rand() % 1000, 250);
+				switch (tipNave) {
+				case 0:
+					NaveEnemigaTAlfa = World->SpawnActor<AnaveEnemigaCazaVeloz>(posicionNave, rotacionNave);
+					TANaveEnemigamulti.Push(NaveEnemigaTAlfa);
+					break;
+				case 1:
+					NaveEnemigaTDelta = World->SpawnActor<AnaveEnemigaCazaSigilosa>(posicionNave, rotacionNave);
+					TANaveEnemigamulti.Push(NaveEnemigaTDelta);
+					break;
+				case 2:
+					NaveEnemigaTLigero = World->SpawnActor<ANaveEnemigaTransporteDesplegable>(posicionNave, rotacionNave);
+					TANaveEnemigamulti.Push(NaveEnemigaTLigero);
+					break;
+				case 3:
+					NaveEnemigaTPesado = World->SpawnActor<ANaveEnemigaTransporteInvisible>(posicionNave, rotacionNave);
+					TANaveEnemigamulti.Push(NaveEnemigaTPesado);
+					break;
+				case 4:
+					NaveEnemigaTScout = World->SpawnActor<ANaveEnemigaEspiaPsicopata>(posicionNave, rotacionNave);
+					TANaveEnemigamulti.Push(NaveEnemigaTScout);
+					break;
+				case 5:
+					NaveEnemigaTCentral = World->SpawnActor<ANaveEnemigaEspiaSupremo>(posicionNave, rotacionNave);
+					TANaveEnemigamulti.Push(NaveEnemigaTCentral);
+					break;
+				case 6:
+					NaveEnemigaTMadre = World->SpawnActor<ANaveEnemigaNodrizaComando>(posicionNave, rotacionNave);
+					TANaveEnemigamulti.Push(NaveEnemigaTMadre);
+					break;
+				case 7:
+					NaveEnemigaTWar = World->SpawnActor<ANaveEnemigaNodrizaFabrica>(posicionNave, rotacionNave);
+					TANaveEnemigamulti.Push(NaveEnemigaTWar);
+					break;
+				case 8:
+					NaveEnemigaTFuel = World->SpawnActor<ANaveEnemigaReabastecimientoPeke>(posicionNave, rotacionNave);
+					TANaveEnemigamulti.Push(NaveEnemigaTFuel);
+					break;
+				case 9:
+					NaveEnemigaTBoms = World->SpawnActor<ANaveEnemigaReabastecimientoSupra>(posicionNave, rotacionNave);
+					TANaveEnemigamulti.Push(NaveEnemigaTBoms);
+					break;
+				default: break;
 
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Naves SPawn"));
+				}
+			}
+			TiempoTranscurrido = 0;
 
 
 

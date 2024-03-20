@@ -12,6 +12,7 @@ void ANaveEnemigaTransporteInvisible::Tick(float DeltaTime)
 
 ANaveEnemigaTransporteInvisible::ANaveEnemigaTransporteInvisible()
 {
+	posicion = GetActorLocation();
 
 }
 
@@ -21,7 +22,7 @@ void ANaveEnemigaTransporteInvisible::Mover(float DeltaTime)
 {
 	ANaveEnemigaTransporte::Mover(DeltaTime);
 	ban++;
-	if (ban > 800) {
+	if (ban > 500) {
 		tepeX = rand() % 1600;
 		tepeY = rand() % 1600;
 		ban = 0;

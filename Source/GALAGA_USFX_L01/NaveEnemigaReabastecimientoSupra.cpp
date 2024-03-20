@@ -13,6 +13,10 @@ ANaveEnemigaReabastecimientoSupra::ANaveEnemigaReabastecimientoSupra()
 {
 	static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/EnemyLevel5.EnemyLevel5'"));
 	NaveEnemigaMesh->SetStaticMesh(Mesh.Object);	
+
+
+	posicion = GetActorLocation();
+
 }
 
 
@@ -26,7 +30,7 @@ void ANaveEnemigaReabastecimientoSupra::Mover(float DeltaTime)
 		bandera *= -1;
 	}
 	if (GetActorLocation().X < -1800) {
-		SetActorLocation(FVector(1200, -1000 + 400, 250.0f));
+		SetActorLocation(FVector(posicion));
 	}
 }
 

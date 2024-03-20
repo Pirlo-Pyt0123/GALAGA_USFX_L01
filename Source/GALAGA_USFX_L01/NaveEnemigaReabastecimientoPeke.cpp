@@ -5,6 +5,7 @@
 
 ANaveEnemigaReabastecimientoPeke::ANaveEnemigaReabastecimientoPeke()
 {
+	posicion = GetActorLocation();
 
 }
 
@@ -24,7 +25,7 @@ void ANaveEnemigaReabastecimientoPeke::Mover(float DeltaTime)
 	}
 	bandera++;
 	if (GetActorLocation().X < -1800) {
-		SetActorLocation(FVector(1200, -1000 + 600, 250.0f));
+		SetActorLocation(FVector(posicion));
 	}
 }
 
@@ -37,6 +38,7 @@ void ANaveEnemigaReabastecimientoPeke::destruirse()
 
 void ANaveEnemigaReabastecimientoPeke::Escapar()
 {
+
 
 }
 
