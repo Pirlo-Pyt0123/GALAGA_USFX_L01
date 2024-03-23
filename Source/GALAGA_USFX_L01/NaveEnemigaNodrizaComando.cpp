@@ -19,8 +19,8 @@ void ANaveEnemigaNodrizaComando::Tick(float DeltaTime)
 void ANaveEnemigaNodrizaComando::Mover(float DeltaTime)
 {
 	ANaveEnemigaNodriza::Mover(DeltaTime);
-	speed = 3;
-	SetActorLocation(FVector(GetActorLocation().X - speed, GetActorLocation().Y - speed * bandera, GetActorLocation().Z));
+	velocity = 3;
+	SetActorLocation(FVector(GetActorLocation().X - velocity, GetActorLocation().Y - velocity * bandera, GetActorLocation().Z));
 	if (GetActorLocation().Y < -1200 || GetActorLocation().Y > -800) {
 		bandera *= -1;
 	}

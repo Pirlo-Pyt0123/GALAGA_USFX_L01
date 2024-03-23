@@ -35,7 +35,7 @@ protected:
 	float energia;
 	float peso;
 	float volumen;
-	float speed;
+	float velocity;
 	FVector posicionClones;
 
 
@@ -53,7 +53,7 @@ public:
 
 	FORCEINLINE float GetResistencia() const { return resistencia; }
     //FORCEINLINE float GetVelocidad() const { return velocidad; }
-	FORCEINLINE float GetSpeed() const { return speed; }
+	FORCEINLINE float GetSpeed() const { return velocity; }
 	FORCEINLINE float GetDanoProducido() const { return danoProducido; }
 	FORCEINLINE FString GetNombre() const { return nombre; }
 	FORCEINLINE float GetTiempoDisparo() const { return tiempoDisparo; }
@@ -67,7 +67,7 @@ public:
 	FORCEINLINE void SetCapacidadPasajeros(int _capacidadPasajeros) { capacidadPasajeros = _capacidadPasajeros; }
 	FORCEINLINE void SetResistencia(float _resistencia) { resistencia = _resistencia; }
     //FORCEINLINE void SetVelocidad(float _velocidad) { velocidad = _velocidad; }
-	FORCEINLINE void SetSpeed(float _speed) { speed = _speed; }
+	FORCEINLINE void SetSpeed(float _velocity) { velocity = _velocity; }
 	FORCEINLINE void SetDanoProducido(float _danoProducido) { danoProducido = _danoProducido; }
 	FORCEINLINE void SetNombre(FString _nombre) { nombre = _nombre; }
 	FORCEINLINE void SetTiempoDisparo(float _tiempoDisparo) { tiempoDisparo = _tiempoDisparo; }

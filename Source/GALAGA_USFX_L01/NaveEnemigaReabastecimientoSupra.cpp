@@ -23,10 +23,10 @@ ANaveEnemigaReabastecimientoSupra::ANaveEnemigaReabastecimientoSupra()
 
 void ANaveEnemigaReabastecimientoSupra::Mover(float DeltaTime)
 {
-	speed = -5;
+	velocity = -5;
 	ANaveEnemigaReabastecimiento::Mover(DeltaTime);
 	SetActorLocation(FVector(GetActorLocation().X - 2, GetActorLocation().Y, GetActorLocation().Z + 1 * bandera));
-	if (GetActorLocation().Z > 800 || GetActorLocation().Z < 0) {
+	if (GetActorLocation().X > 800 || GetActorLocation().X < 0) {
 		bandera *= -1;
 	}
 	if (GetActorLocation().X < -1800) {

@@ -24,7 +24,7 @@ void ANaveEnemigaEspia::Tick(float DeltaTime)
 
 void ANaveEnemigaEspia::Mover(float DeltaTime)
 {
-	speed = -3;
+	velocity = -3;
 	SetActorLocation(FVector(GetActorLocation().X, GetActorLocation().Y, GetActorLocation().Z));
 }
 

@@ -11,17 +11,15 @@ AproyectilAmigo::AproyectilAmigo()
 
 }
 
-// Called when the game starts or when spawned
 void AproyectilAmigo::BeginPlay()
 {
-	Super::BeginPlay();
-	
+
 }
 
-// Called every frame
 void AproyectilAmigo::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);
 
 }
+
+
 

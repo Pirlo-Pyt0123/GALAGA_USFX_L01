@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
 #include "Galaga_USFX_L01GameMode.generated.h"
-class ALogros;
+class Avidas;
 class ANaveEnemiga;
 class ANaveEnemigaCazaVeloz;
 class ANaveEnemigaReabastecimiento;
@@ -60,18 +60,27 @@ protected:
 	
 
 
-private:
+public:
 
 	int TiempoTranscurrido;
 
-	ALogros* logro1;
+	Avidas* vidas01;
 
 
-	//TArray<AnaveEnemigaCaza* >TAnavesEnemigasCaza;
-	//TArray<ANaveEnemigaTransporte* >TAnavesEnemigasTrasnporte;
-	//TArray<ANaveEnemigaEspia* >TAnavesEnemigasEspia;
-	//TArray<ANaveEnemigaReabastecimiento* >TAnavesEnemigasReabastecimiento;
-	//TArray<ANaveEnemigaNodriza* >TAnavesEnemigasNodriza;
-	TArray<ANaveEnemiga*> TANaveEnemigamulti;
+	TArray<AnaveEnemigaCaza* >TAnavesEnemigasCaza;
+	TArray<ANaveEnemigaTransporte* >TAnavesEnemigasTrasnporte;
+	TArray<ANaveEnemigaEspia* >TANavesEnemigasEspia;
+	TArray<ANaveEnemigaReabastecimiento* >TANavesEnemigasReabastecimiento;
+	TArray<ANaveEnemigaNodriza* >TANavesEnemigasNodriza;
+	TArray<ANaveEnemiga*> TAnaveEnemigamulti;
+
+	
+
+	//TMap uso para coordenadas de las naves enemigas
+	UPROPERTY(VisibleAnywhere)
+	TMap<ANaveEnemiga*, FVector> TMPosicionesNavesEnemigas;
+
+
+	
 
 };

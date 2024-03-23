@@ -10,7 +10,8 @@ UCLASS()
 class GALAGA_USFX_L01_API AproyectilAmigo : public AActor
 {
 	GENERATED_BODY()
-	
+private:
+
 public:	
 	// Sets default values for this actor's properties
 	AproyectilAmigo();

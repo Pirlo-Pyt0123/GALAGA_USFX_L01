@@ -9,6 +9,8 @@
 class UProjectileMovementComponent;
 class UStaticMeshComponent;
 
+class AnaveEnemigaCazaSigilosa;
+
 UCLASS(config=Game)
 class AGALAGA_USFX_L01Projectile : public AActor
 {
@@ -33,5 +35,7 @@ public:
 	FORCEINLINE UStaticMeshComponent* GetProjectileMesh() const { return ProjectileMesh; }
 	/** Returns ProjectileMovement subobject **/
 	FORCEINLINE UProjectileMovementComponent* GetProjectileMovement() const { return ProjectileMovement; }
+
+
 };
 

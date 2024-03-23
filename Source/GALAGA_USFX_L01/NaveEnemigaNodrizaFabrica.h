@@ -14,8 +14,8 @@ class GALAGA_USFX_L01_API ANaveEnemigaNodrizaFabrica : public ANaveEnemigaNodriz
 	
 private:
 	float capacidadExtra;
-	bool ban = true;
-	int posicionmov;
+	bool bolivia = true;
+	int semov;
 
 public:
 	ANaveEnemigaNodrizaFabrica();

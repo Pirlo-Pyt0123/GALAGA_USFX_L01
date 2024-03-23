@@ -108,14 +108,19 @@ void AGALAGA_USFX_L01Pawn::FireShot(FVector FireDirection)
 		if (FireDirection.SizeSquared() > 0.0f)
 		{
 			const FRotator FireRotation = FireDirection.Rotation();
+
+
 			// Spawn projectile at an offset from this pawn
 			const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
+
+
 
 			UWorld* const World = GetWorld();
 			if (World != nullptr)
 			{
 				// spawn the projectile
 				World->SpawnActor<AGALAGA_USFX_L01Projectile>(SpawnLocation, FireRotation);
+
 			}
 
 			bCanFire = false;

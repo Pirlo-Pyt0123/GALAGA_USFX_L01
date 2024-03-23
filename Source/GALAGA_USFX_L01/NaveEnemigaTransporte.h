@@ -14,6 +14,7 @@ class GALAGA_USFX_L01_API ANaveEnemigaTransporte : public ANaveEnemiga
 private:
 	float capacidadCargaPeso;
 	float capacidadCargaVolumen;
+	float VelocidadSeguimiento = 0;
 
 
 public:

@@ -7,10 +7,8 @@ ANaveEnemigaNodrizaFabrica::ANaveEnemigaNodrizaFabrica()
 {
 	GetActorRelativeScale3D();
 	//aumenta el tamano de la nave
-	SetActorScale3D(FVector(2, 2, 2));
+	SetActorScale3D(FVector(4, 4, 4));
 	posicion = GetActorLocation();
-
-
 
  
 }
@@ -25,20 +23,20 @@ void ANaveEnemigaNodrizaFabrica::Tick(float DeltaTime)
 void ANaveEnemigaNodrizaFabrica::Mover(float DeltaTime)
 {
 	ANaveEnemigaNodriza::Mover(DeltaTime);
-	if (ban) {
-		posicionmov = rand() % 1600;
-		ban = false;
+	if (bolivia) {
+		semov = rand() % 1600;
+		bolivia = false;
 	}
 
 	else {
-		if (posicionmov > GetActorLocation().Y) {
+		if (semov > GetActorLocation().Y) {
 			SetActorLocation(FVector(GetActorLocation().X, GetActorLocation().Y + 1, GetActorLocation().Z));
 		}
-		else if (posicionmov < GetActorLocation().Y) {
+		else if (semov < GetActorLocation().Y) {
 			SetActorLocation(FVector(GetActorLocation().X, GetActorLocation().Y - 1, GetActorLocation().Z));
 		}
 		else {
-			ban = true;
+			bolivia = true;
 		}
 
 	}

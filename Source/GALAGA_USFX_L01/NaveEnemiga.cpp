@@ -13,9 +13,9 @@ ANaveEnemiga::ANaveEnemiga()
 
 	
 	//static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
-	// Create the mesh component
+	 //Create the mesh component
 	NaveEnemigaMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
-	//NaveEnemigaMesh->SetStaticMesh(ShipMesh.Object);
+//	NaveEnemigaMesh->SetStaticMesh(ShipMesh.Object);
 	NaveEnemigaMesh->SetupAttachment(RootComponent);
 	RootComponent = NaveEnemigaMesh;
 
@@ -29,6 +29,7 @@ void ANaveEnemiga::BeginPlay()
 {
 	Super::BeginPlay();
 	posicion = GetActorLocation();
+
 }
 
 

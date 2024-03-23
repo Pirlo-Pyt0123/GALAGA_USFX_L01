@@ -22,8 +22,8 @@ void ANaveEnemigaTransporteDesplegable::mover(float DeltaTime)
 {
 		
 	ANaveEnemigaTransporte::Mover(DeltaTime);
-		speed = 3;
-		SetActorLocation(FVector(GetActorLocation().X - speed, GetActorLocation().Y + speed * bandera, GetActorLocation().Z));
+	velocity = 3;
+		SetActorLocation(FVector(GetActorLocation().X - velocity, GetActorLocation().Y + velocity * bandera, GetActorLocation().Z));
 		if (GetActorLocation().Y < -1000 || GetActorLocation().Y > -600) {
 			bandera *= -1;
 

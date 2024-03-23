@@ -16,6 +16,8 @@ void AnaveEnemigaCaza::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	Mover(DeltaTime);
+	
+
 }
   
 //voids mamalones
@@ -23,8 +25,8 @@ void AnaveEnemigaCaza::Tick(float DeltaTime)
 
 void AnaveEnemigaCaza::Mover(float DeltaTime)
 {
-	speed = 1;
-	SetActorLocation(FVector(GetActorLocation().X - speed, GetActorLocation().Y, GetActorLocation().Z));
+	velocity = 1;
+	SetActorLocation(FVector(GetActorLocation().X - velocity, GetActorLocation().Y, GetActorLocation().Z));
 
 }
 
@@ -35,5 +37,6 @@ void AnaveEnemigaCaza::destruirse()
 
 void AnaveEnemigaCaza::Escapar()
 {
+
 }
 

@@ -1,15 +1,30 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "GALAGA_USFX_L01Pawn.h"
 #include "NaveEnemigaTransporte.h"
 
-
+//AGALAGA_USFX_L01Pawn* NaveObjetivo;
 
 void ANaveEnemigaTransporte::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	Mover(DeltaTime);
+
+	//if (NaveObjetivo != nullptr)
+	//{
+	//	// Obtener la posición actual de la nave objetivo (tu nave)
+	//	FVector PosicionObjetivo = NaveObjetivo->GetActorLocation();
+
+	//	// Calcular la dirección hacia la nave objetivo
+	//	FVector Direccion = (PosicionObjetivo - GetActorLocation()).GetSafeNormal();
+
+	//	// Mover la nave enemiga hacia la nave objetivo
+	//	FVector NuevaPosicion = GetActorLocation() + Direccion * VelocidadSeguimiento * DeltaTime;
+	//	SetActorLocation(NuevaPosicion);
+
+	//}
 }
+
 
 ANaveEnemigaTransporte::ANaveEnemigaTransporte()
 {

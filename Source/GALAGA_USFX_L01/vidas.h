@@ -14,18 +14,37 @@ protected:
 	float vidaMaxima;
 	float vidaActual;
 	float sinVida;
+	FVector posicion;
+	float temporizador = 0;
+
+	UPROPERTY(EditAnywhere)
+	TMap<FString, int> tablavidas;
 
 
 public:
 	FORCEINLINE float GetVidamaxima() const { return vidaMaxima; }
 	FORCEINLINE float GetVidaactual() const { return vidaActual; }
 	FORCEINLINE float GetSinvida() const { return sinVida; }
-
+	
+	
 
 	FORCEINLINE void SetVidamaxima(float _vidamaxima) { vidaMaxima = _vidamaxima; }
 	FORCEINLINE void SetRecordactual(float _vidaactual) { vidaActual = _vidaactual; }
 	FORCEINLINE void SetSinvida(float _sinvida) { sinVida = _sinvida; }
-	
+
+
+	FORCEINLINE void SetPosicion(FVector _posicion) { posicion = _posicion; }
+	FORCEINLINE void CalcularVida(FString, int);
+	FORCEINLINE void InsertarVida(FString);
+	FORCEINLINE void EliminarVida(FString);
+	FORCEINLINE void ModificarVida(FString, int);
+	FORCEINLINE void ListarVida();
+	FORCEINLINE void Getcorazones();
+	FORCEINLINE void Getescudos();
+
+
+
+
 public:	
 	// Sets default values for this actor's properties
 	Avidas();

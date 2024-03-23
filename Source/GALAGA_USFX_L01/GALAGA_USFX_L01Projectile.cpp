@@ -7,6 +7,9 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Engine/StaticMesh.h"
 
+#include  "naveEnemigaCazaSigilosa.h"
+
+
 AGALAGA_USFX_L01Projectile::AGALAGA_USFX_L01Projectile() 
 {
 	// Static reference to the mesh to use for the projectile
@@ -42,4 +45,5 @@ void AGALAGA_USFX_L01Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* Oth
 	}
 
 	Destroy();
+
 }
