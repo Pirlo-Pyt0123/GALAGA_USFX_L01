@@ -15,8 +15,9 @@ AescudoPerron::AescudoPerron()
 	shieldMesh->SetStaticMesh(ShipMesh.Object);
 	shieldMesh->SetupAttachment(RootComponent);
 	RootComponent = shieldMesh;
+	
 
-	DistanciaEscudoNave = 200.0f;
+	DistanciaEscudoNave = 100.0f;
 
 
 
@@ -29,15 +30,7 @@ void AescudoPerron::BeginPlay()
 	//shieldMesh->OnComponentBeginOverlap.AddDynamic(this, &AescudoPerron::OnOverlapBegin);
 }
 
-//void AescudoPerron::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* AnaveEnemigaCaza, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-//{
-//	AGALAGA_USFX_L01Pawn* EnemyShip = Cast<AGALAGA_USFX_L01Pawn>(AnaveEnemigaCaza);
-//	if (EnemyShip)
-//	{
-//		// Destruir la nave
-//		EnemyShip->Destroy();
-//	}
-//}
+
 
 // Called every frame
 void AescudoPerron::Tick(float DeltaTime)
@@ -70,7 +63,7 @@ void AescudoPerron::Tick(float DeltaTime)
 void AescudoPerron::desaparecer()
 {
 	time++;
-	if (time >= 300)
+	if (time >= 300000000)
 	{
 		Destroy();
 		

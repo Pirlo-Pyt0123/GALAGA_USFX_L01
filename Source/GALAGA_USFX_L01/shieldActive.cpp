@@ -13,7 +13,7 @@ UshieldActive::UshieldActive()
 	PrimaryComponentTick.bCanEverTick = true;
 	ShieldActivado = CreateDefaultSubobject<USceneComponent>(TEXT("MySceneComponent"));
 	//SeetRootComponent(ShieldActivado);
-	// ...
+	// 
 }
 
 void UshieldActive::Spawn()

@@ -102,7 +102,7 @@ public:
 protected:
 	
 	void Mover(float DeltaTime) PURE_VIRTUAL(ANaveEnemiga::Mover, );
-	void Disparar(bool bDisparar) PURE_VIRTUAL(ANaveEnemiga::Disparar, );
+	void Disparar() PURE_VIRTUAL(ANaveEnemiga::Disparar, );
 	void Destruirse() PURE_VIRTUAL(ANaveEnemiga::Destruirse, );
 	void Escapar() PURE_VIRTUAL(ANaveEnemiga::Escapar, );
 };

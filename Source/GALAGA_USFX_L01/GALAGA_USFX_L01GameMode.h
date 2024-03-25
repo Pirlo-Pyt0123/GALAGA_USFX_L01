@@ -72,7 +72,7 @@ public:
 	TArray<ANaveEnemigaEspia* >TANavesEnemigasEspia;
 	TArray<ANaveEnemigaReabastecimiento* >TANavesEnemigasReabastecimiento;
 	TArray<ANaveEnemigaNodriza* >TANavesEnemigasNodriza;
-	TArray<ANaveEnemiga*> TAnaveEnemigamulti;
+	TArray<ANaveEnemiga*> TAnaveEnemigaPerronas;
 
 	
 
