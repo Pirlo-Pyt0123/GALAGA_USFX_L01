@@ -5,7 +5,9 @@
 
 #include "CoreMinimal.h"
 #include "NaveEnemiga.h"
+#include "Particles/ParticleSystemComponent.h" // Incluir la cabecera para componentes de partículas
 #include "naveEnemigaCaza.generated.h"
+
 
 UCLASS()
 class GALAGA_USFX_L01_API AnaveEnemigaCaza : public ANaveEnemiga
@@ -18,6 +20,12 @@ protected:
 	uint32 bDisparando : 1;
 	FTimerHandle TimerHandle_ShotTimerExpired;
 	
+	//efecto 
+	UPROPERTY(EditDefaultsOnly, Category = "Effects")
+	class UParticleSystem* ExplosionParticles;
+
+	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
+	class USoundBase* ExploSound;
 
 public:
 	AnaveEnemigaCaza();
@@ -38,10 +46,10 @@ public:
 protected:
 	virtual void Mover(float DeltaTime);
 	virtual void Disparar(FVector DireccionFuego);
-	virtual void destruirse();
 	virtual void Escapar();
 
 public:
 	void ShotTimerExpired();
-	
+	UFUNCTION()
+	void FuncionDeManejoDeColision(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 };

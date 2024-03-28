@@ -23,14 +23,6 @@ class AGalaga_USFX_L01GameMode : public AGameModeBase
 public:
 	AGalaga_USFX_L01GameMode();
 
-public:
-
-
-
-	UPROPERTY(EditAnywhere)
-	int escudo = 2;
-
-
 	//ANaveEnemiga* NaveEnemiga01;
 	ANaveEnemigaTransporte* NaveEnemigaTransporte01;
 	//AnaveEnemigaCaza* NaveEnemigaCaza01;
@@ -53,9 +45,11 @@ public:
 	ANaveEnemigaTransporte* NaveEnemigaTransporteDesplegable01;
 	ANaveEnemigaTransporte* NaveEnemigaTransporteInvisible01;
 
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	//virtual void Tick(float DeltaTime) override;
 	
 	
 
@@ -68,18 +62,19 @@ public:
 
 
 	TArray<AnaveEnemigaCaza* >TAnavesEnemigasCaza;
-	TArray<ANaveEnemigaTransporte* >TAnavesEnemigasTrasnporte;
-	TArray<ANaveEnemigaEspia* >TANavesEnemigasEspia;
-	TArray<ANaveEnemigaReabastecimiento* >TANavesEnemigasReabastecimiento;
+	//TArray<ANaveEnemigaTransporte* >TAnavesEnemigasTrasnporte;
+	//TArray<ANaveEnemigaEspia* >TANavesEnemigasEspia;
+	//TArray<ANaveEnemigaReabastecimiento* >TANavesEnemigasReabastecimiento;
 	TArray<ANaveEnemigaNodriza* >TANavesEnemigasNodriza;
 	TArray<ANaveEnemiga*> TAnaveEnemigaPerronas;
-
+	TArray<ANaveEnemiga*> Enemigos;
 	
 
 	//TMap uso para coordenadas de las naves enemigas
-	UPROPERTY(VisibleAnywhere)
-	TMap<ANaveEnemiga*, FVector> TMPosicionesNavesEnemigas;
-
+private:
+	TMap<int32, TTuple<TArray<ANaveEnemigaEspia*>, float>> ColumnaNavesEnemigasEspia;
+	UPROPERTY(EditAnywhere, Category = "Configuración de Naves Enemigas")
+	float VelocidadNavesEnemigasEspia;
 
 	
 

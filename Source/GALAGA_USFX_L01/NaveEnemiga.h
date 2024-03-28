@@ -94,10 +94,13 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	
+
 
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	
 
 protected:
 	
@@ -105,4 +108,5 @@ protected:
 	void Disparar() PURE_VIRTUAL(ANaveEnemiga::Disparar, );
 	void Destruirse() PURE_VIRTUAL(ANaveEnemiga::Destruirse, );
 	void Escapar() PURE_VIRTUAL(ANaveEnemiga::Escapar, );
+
 };

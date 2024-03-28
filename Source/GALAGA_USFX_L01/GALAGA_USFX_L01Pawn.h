@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "InventarioComp.h"	
+#include "MunicionBeta.h"	
 #include "GALAGA_USFX_L01Pawn.generated.h"
 
 UCLASS(Blueprintable)
@@ -24,6 +26,18 @@ class AGALAGA_USFX_L01Pawn : public APawn
 	class USpringArmComponent* CameraBoom;
 
 public:
+	UPROPERTY()
+	UInventarioComp* MyInventory;
+	UFUNCTION()
+	void DropItem();
+	UFUNCTION()
+	void TakeItem(AMunicionBeta* InventoryItem);
+	UFUNCTION()
+	virtual void NotifyHit(class UPrimitiveComponent* MyComp,
+		AActor* Other, class UPrimitiveComponent* OtherComp,
+		bool bSelfMoved, FVector HitLocation, FVector
+		HitNormal, FVector NormalImpulse, const FHitResult&
+		Hit) override;
 	AGALAGA_USFX_L01Pawn();
 
 	/** Offset from the ships location to spawn projectiles */

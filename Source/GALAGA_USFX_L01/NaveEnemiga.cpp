@@ -19,7 +19,6 @@ ANaveEnemiga::ANaveEnemiga()
 	NaveEnemigaMesh->SetupAttachment(RootComponent);
 	RootComponent = NaveEnemigaMesh;
 
-
 }
 
 void ANaveEnemiga::BeginPlay()
@@ -39,6 +38,9 @@ void ANaveEnemiga::Tick(float DeltaTime)
 	
 
 }
+
+
+
 
 
 

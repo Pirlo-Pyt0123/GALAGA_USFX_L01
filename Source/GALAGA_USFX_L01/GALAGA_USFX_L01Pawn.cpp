@@ -18,6 +18,39 @@ const FName AGALAGA_USFX_L01Pawn::MoveRightBinding("MoveRight");
 const FName AGALAGA_USFX_L01Pawn::FireForwardBinding("FireForward");
 const FName AGALAGA_USFX_L01Pawn::FireRightBinding("FireRight");
 
+void AGALAGA_USFX_L01Pawn::DropItem()
+{
+	if (MyInventory->CurrentInventory.Num() == 0)
+	{
+		return;
+	}
+	AMunicionBeta* Item =MyInventory->CurrentInventory.Last();
+	MyInventory->RemoveFromInventory(Item);
+	FVector ItemOrigin;
+	FVector ItemBounds;
+	Item->GetActorBounds(false, ItemOrigin, ItemBounds);
+	FTransform PutDownLocation = GetTransform() + FTransform(RootComponent->GetForwardVector() *ItemBounds.GetMax());
+	Item->PutDown(PutDownLocation);
+
+}
+
+void AGALAGA_USFX_L01Pawn::TakeItem(AMunicionBeta* InventoryItem)
+{
+	InventoryItem->PickUp();
+	MyInventory->AddToInventory(InventoryItem);
+
+}
+
+void AGALAGA_USFX_L01Pawn::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
+{
+	AMunicionBeta* InventoryItem =
+		Cast<AMunicionBeta>(Other);
+	if (InventoryItem != nullptr)
+	{
+		TakeItem(InventoryItem);
+	}
+}
+
 AGALAGA_USFX_L01Pawn::AGALAGA_USFX_L01Pawn()
 {	
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
@@ -35,7 +68,7 @@ AGALAGA_USFX_L01Pawn::AGALAGA_USFX_L01Pawn()
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->SetUsingAbsoluteRotation(true); // Don't want arm to rotate when ship does
-	CameraBoom->TargetArmLength = 1200.f;
+	CameraBoom->TargetArmLength = 1900.f;
 	CameraBoom->SetRelativeRotation(FRotator(-70.f, 0.f, 0.f));
 	CameraBoom->bDoCollisionTest = false; // Don't want to pull camera in when it collides with level
 
@@ -50,6 +83,11 @@ AGALAGA_USFX_L01Pawn::AGALAGA_USFX_L01Pawn()
 	GunOffset = FVector(90.f, 0.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = true;
+
+	MyInventory =CreateDefaultSubobject<UInventarioComp>("MyInventory");
+
+
+
 }
 
 void AGALAGA_USFX_L01Pawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -61,6 +99,14 @@ void AGALAGA_USFX_L01Pawn::SetupPlayerInputComponent(class UInputComponent* Play
 	PlayerInputComponent->BindAxis(MoveRightBinding);
 	PlayerInputComponent->BindAxis(FireForwardBinding);
 	PlayerInputComponent->BindAxis(FireRightBinding);
+
+
+
+	//inventario
+
+	PlayerInputComponent->BindAction("OpenInventario",EInputEvent::IE_Pressed,this,&AGALAGA_USFX_L01Pawn::DropItem);
+
+
 }
 
 void AGALAGA_USFX_L01Pawn::Tick(float DeltaSeconds)

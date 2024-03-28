@@ -45,5 +45,6 @@ void AGALAGA_USFX_L01Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* Oth
 	}
 
 	Destroy();
-
+	AActor* nave = Cast<AActor>(OtherActor);
+	nave->Destroy();
 }

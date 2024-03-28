@@ -23,7 +23,7 @@ void AnaveEnemigaCazaVeloz::Mover(float DeltaTime)
 	AnaveEnemigaCaza::Mover(DeltaTime);
 	velocity = 3;
 	SetActorLocation(FVector(GetActorLocation().X - velocity, GetActorLocation().Y + velocity * bandera, GetActorLocation().Z));
-	if (GetActorLocation().Y < -1000 || GetActorLocation().Y > -600) {
+	if (GetActorLocation().Y > GetPosicion().Y + 100 || GetActorLocation().Y < GetPosicion().Y - 200) {
 		bandera *= -1;
 	}
 	if (GetActorLocation().X < -1800) {

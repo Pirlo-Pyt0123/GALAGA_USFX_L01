@@ -9,9 +9,9 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/InputComponent.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "Engine/CollisionProfile.h"
 #include "Engine/StaticMesh.h"
 #include "Kismet/GameplayStatics.h"
+#include "escudoPerron.h"
 #include "Sound/SoundBase.h"
 
 
@@ -24,6 +24,16 @@ AnaveEnemigaCaza::AnaveEnemigaCaza()
 	GunOfsset = FVector(90.0f, 0.0f, 0.0f);
 	FireRate = 0.1f;
 	bDisparando = true;
+	//efecto explosion
+	
+	static ConstructorHelpers::FObjectFinder<UParticleSystem> ExplosionAsset(TEXT("ParticleSystem'/Game/StarterContent/Particles/P_Explosion.P_Explosion'"));
+	ExplosionParticles = ExplosionAsset.Object;
+	//sonido explosion
+	static ConstructorHelpers::FObjectFinder<USoundBase> explosionSound(TEXT("SoundWave'/Game/TwinStick/Audio/Explosion01.Explosion01'"));
+	ExploSound = explosionSound.Object;
+	//colisionar y fiumba
+	NaveEnemigaMesh->OnComponentHit.AddDynamic(this, &AnaveEnemigaCaza::FuncionDeManejoDeColision);
+
 
 
 }
@@ -70,10 +80,7 @@ void AnaveEnemigaCaza::Disparar(FVector DireccionFuego)
 	}
 }
 
-void AnaveEnemigaCaza::destruirse()
-{
 
-}
 
 void AnaveEnemigaCaza::Escapar()
 {
@@ -84,6 +91,23 @@ void AnaveEnemigaCaza::ShotTimerExpired()
 {
 		bDisparando = true;
 }
+
+void AnaveEnemigaCaza::FuncionDeManejoDeColision(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
+{// Verificar si el objeto con el que colisionamos es una bala
+	
+	
+		// Destruir la nave enemiga
+		Destroy();
+		// Crear una explosión
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticles, GetActorLocation());
+		// Reproducir un sonido
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), ExploSound, GetActorLocation());
+		
+
+	
+}
+
+
 
 
 

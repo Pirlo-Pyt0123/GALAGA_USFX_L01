@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "GALAGA_USFX_L01Pawn.h"
 #include "CoreMinimal.h"
 #include "Components/SceneComponent.h"
 #include "shieldActive.generated.h"
@@ -18,9 +19,14 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Cookbook)
 	void Spawn();
+	//esta
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<AActor> ActorToSpawn;
-
+	TSubclassOf<AActor> shieldSpawn;
+	AGALAGA_USFX_L01Pawn* NaveControl;
+	//tiempo importante para hacer aparecer el escudo
+	UPROPERTY(VisibleAnywhere)
+	int tiempoAparecer = 230;
+	float estaWea = 0.0f;
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -33,4 +39,5 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	class USceneComponent* ShieldActivado;
 
+	//float ShieldActivadoDelay = 0.0f;
 };
