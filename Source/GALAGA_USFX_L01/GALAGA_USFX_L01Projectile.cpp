@@ -4,9 +4,9 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Components/StaticMeshComponent.h"
-#include "GameFramework/ProjectileMovementComponent.h"
+#include "GALAGA_USFX_L01Pawn.h"
+#include "Kismet/GameplayStatics.h"
 #include "Engine/StaticMesh.h"
-
 #include  "naveEnemigaCazaSigilosa.h"
 
 
@@ -22,7 +22,8 @@ AGALAGA_USFX_L01Projectile::AGALAGA_USFX_L01Projectile()
 	ProjectileMesh->BodyInstance.SetCollisionProfileName("Projectile");
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AGALAGA_USFX_L01Projectile::OnHit);		// set up a notification for when this component hits something
 	RootComponent = ProjectileMesh;
-
+	static ConstructorHelpers::FObjectFinder<USoundBase> FireAudio(TEXT("SoundWave'/Game/TwinStick/Audio/laser.laser'"));
+	FireSound = FireAudio.Object;
 	// Use a ProjectileMovementComponent to govern this projectile's movement
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement0"));
 	ProjectileMovement->UpdatedComponent = ProjectileMesh;
@@ -34,7 +35,14 @@ AGALAGA_USFX_L01Projectile::AGALAGA_USFX_L01Projectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
+
+	GunOffset = FVector(90.f, 0.f, 0.f);
+	bCanFire = true;
+	
+	
 }
+
+
 
 void AGALAGA_USFX_L01Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
@@ -45,6 +53,15 @@ void AGALAGA_USFX_L01Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* Oth
 	}
 
 	Destroy();
-	AActor* nave = Cast<AActor>(OtherActor);
-	nave->Destroy();
+	//AActor* nave = Cast<AActor>(OtherActor);
+	//nave->Destroy();
 }
+
+
+
+
+
+
+
+
+

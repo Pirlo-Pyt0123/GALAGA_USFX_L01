@@ -28,6 +28,7 @@ public:
 
 	//Metodo 
 
+
 	FORCEINLINE void desaparecer(float _coolTime);
 
 

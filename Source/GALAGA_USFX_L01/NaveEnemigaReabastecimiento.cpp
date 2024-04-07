@@ -5,7 +5,7 @@
 
 ANaveEnemigaReabastecimiento::ANaveEnemigaReabastecimiento()
 {
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/EnemyLevel4.EnemyLevel4'"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/IAaseet/Nave01/78722f052210_crea_una_nave_alien.78722f052210_crea_una_nave_alien'"));
 	NaveEnemigaMesh->SetStaticMesh(ShipMesh.Object);
 	
 }

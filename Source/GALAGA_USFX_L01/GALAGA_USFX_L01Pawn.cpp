@@ -12,11 +12,17 @@
 #include "Engine/StaticMesh.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
+#include "proyectilAmigo.h"
+#include "shieldActive.h"
+
 
 const FName AGALAGA_USFX_L01Pawn::MoveForwardBinding("MoveForward");
 const FName AGALAGA_USFX_L01Pawn::MoveRightBinding("MoveRight");
 const FName AGALAGA_USFX_L01Pawn::FireForwardBinding("FireForward");
 const FName AGALAGA_USFX_L01Pawn::FireRightBinding("FireRight");
+const FName AGALAGA_USFX_L01Pawn::MoveUpBinding("MoveUpBinding");
+
+
 
 void AGALAGA_USFX_L01Pawn::DropItem()
 {
@@ -85,9 +91,19 @@ AGALAGA_USFX_L01Pawn::AGALAGA_USFX_L01Pawn()
 	bCanFire = true;
 
 	MyInventory =CreateDefaultSubobject<UInventarioComp>("MyInventory");
+	
+	 
+	StartLocation = FVector(-1449.0, -15.0, 244.0);
+
+	
+	bCanJump = true;
+
+	PuedeSaltar = true;
+
+	salto1 = 0.0f;
 
 
-
+	AlturaMaxima = 525.0f;
 }
 
 void AGALAGA_USFX_L01Pawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -100,27 +116,75 @@ void AGALAGA_USFX_L01Pawn::SetupPlayerInputComponent(class UInputComponent* Play
 	PlayerInputComponent->BindAxis(FireForwardBinding);
 	PlayerInputComponent->BindAxis(FireRightBinding);
 
+	PlayerInputComponent->BindAxis(MoveUpBinding);
+
 
 
 	//inventario
 
-	PlayerInputComponent->BindAction("OpenInventario",EInputEvent::IE_Pressed,this,&AGALAGA_USFX_L01Pawn::DropItem);
+	//PlayerInputComponent->BindAction("OpenInventario",EInputEvent::IE_Pressed,this,&AGALAGA_USFX_L01Pawn::DropItem);
+	//vuelve al inicio
+	PlayerInputComponent->BindAction("RestartGame", EInputEvent::IE_Pressed, this, &AGALAGA_USFX_L01Pawn::ReturnToStart);
+	// saltito papu
+
+	PlayerInputComponent->BindAction("Salto", IE_Pressed, this, &AGALAGA_USFX_L01Pawn::Saltar);
+	//PlayerInputComponent->BindAction("Salto", IE_Released, this, &AGALAGA_USFX_L01Pawn::DejarDeSaltar);
+	PlayerInputComponent->BindAction("Disparo", IE_Pressed, this, &AGALAGA_USFX_L01Pawn::FireProjectile);
 
 
 }
 
+void AGALAGA_USFX_L01Pawn::FireProjectile()
+{
+	Super::BeginPlay();
+	// Spawn two projectiles
+	FVector SpawnLocation = GetActorLocation();
+	FRotator FireRotation = GetActorRotation();
+	UWorld* const World = GetWorld();
+	if (World != nullptr)
+	{
+		// spawn the projectile
+		World->SpawnActor<AGALAGA_USFX_L01Projectile>(SpawnLocation-40, FireRotation);
+		World->SpawnActor<AGALAGA_USFX_L01Projectile>(SpawnLocation + 80, FireRotation);
+
+	}
+	if (FireSound != nullptr)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+	}
+	
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Disparo"));
+}
+
 void AGALAGA_USFX_L01Pawn::Tick(float DeltaSeconds)
 {
+
 	// Find movement direction
 	const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
 	const float RightValue = GetInputAxisValue(MoveRightBinding);
 
+	const float HeightValue = GetInputAxisValue(MoveUpBinding);
+
+
+
 	// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
-	const FVector MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
+
+	const FVector MoveDirection = FVector(ForwardValue, RightValue, 0+ salto1).GetClampedToMaxSize(1.0f);
+
+	
+	if (GetActorLocation().Z >= AlturaMaxima)
+	{
+		salto1 = -1.0f;
+	}
+	else if(GetActorLocation().Z <= 245.0f)
+	{
+		salto1 = 0.0f;
+	}
+
 
 	// Calculate  movement
 	const FVector Movement = MoveDirection * MoveSpeed * DeltaSeconds;
-
+	
 	// If non-zero size, move this actor
 	if (Movement.SizeSquared() > 0.0f)
 	{
@@ -143,6 +207,14 @@ void AGALAGA_USFX_L01Pawn::Tick(float DeltaSeconds)
 
 	// Try and fire a shot
 	FireShot(FireDirection);
+
+
+	
+
+
+
+
+
 }
 
 void AGALAGA_USFX_L01Pawn::FireShot(FVector FireDirection)
@@ -187,4 +259,47 @@ void AGALAGA_USFX_L01Pawn::ShotTimerExpired()
 {
 	bCanFire = true;
 }
+
+void AGALAGA_USFX_L01Pawn::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
+{
+	Saltar();
+}
+
+
+
+
+
+void AGALAGA_USFX_L01Pawn::Saltar()
+{
+
+	//Temporizador con timerhandle
+
+	salto1 = 1.0f;
+
+
+
+	//GetWorldTimerManager().SetTimer(TiempoSalto, this, &AGALAGA_USFX_L01Pawn::DejarDeSaltar, 5.0f, false);
+
+
+}
+
+void AGALAGA_USFX_L01Pawn::DejarDeSaltar()
+{
+	//SetActorLocation(FVector(GetActorLocation().X, GetActorLocation().Y, GetActorLocation().Z - 100.0f));
+
+	bCanJump = true;
+
+
+}
+
+
+
+void AGALAGA_USFX_L01Pawn::ReturnToStart()
+{
+		SetActorLocation(StartLocation);
+
+	
+}
+
+
 

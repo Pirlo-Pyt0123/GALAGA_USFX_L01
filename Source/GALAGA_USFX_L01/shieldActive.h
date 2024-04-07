@@ -5,6 +5,7 @@
 #include "GALAGA_USFX_L01Pawn.h"
 #include "CoreMinimal.h"
 #include "Components/SceneComponent.h"
+#include "escudoPerron.h"
 #include "shieldActive.generated.h"
 
 
@@ -22,7 +23,7 @@ public:
 	//esta
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AActor> shieldSpawn;
-	AGALAGA_USFX_L01Pawn* NaveControl;
+	//AGALAGA_USFX_L01Pawn* NaveControl;
 	//tiempo importante para hacer aparecer el escudo
 	UPROPERTY(VisibleAnywhere)
 	int tiempoAparecer = 230;
@@ -35,9 +36,12 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	class USceneComponent* ShieldActivado;
+	class USceneComponent* ShieldActiveComponent;
 
 	//float ShieldActivadoDelay = 0.0f;
+	void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent);
+	void OnKeyPressed();
 };

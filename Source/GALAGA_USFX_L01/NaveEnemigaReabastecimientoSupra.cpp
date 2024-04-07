@@ -11,10 +11,7 @@ void ANaveEnemigaReabastecimientoSupra::Tick(float DeltaTime)
 
 ANaveEnemigaReabastecimientoSupra::ANaveEnemigaReabastecimientoSupra()
 {
-	static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/EnemyLevel5.EnemyLevel5'"));
-	NaveEnemigaMesh->SetStaticMesh(Mesh.Object);	
-
-
+	
 	posicion = GetActorLocation();
 
 }
@@ -23,11 +20,11 @@ ANaveEnemigaReabastecimientoSupra::ANaveEnemigaReabastecimientoSupra()
 
 void ANaveEnemigaReabastecimientoSupra::Mover(float DeltaTime)
 {
-	velocity = -5;
-	ANaveEnemigaReabastecimiento::Mover(DeltaTime);
-	SetActorLocation(FVector(GetActorLocation().X - 2, GetActorLocation().Y, GetActorLocation().Z + 1 * bandera));
-	if (GetActorLocation().X > 800 || GetActorLocation().X < 0) {
+	velocity = 3;
+	SetActorLocation(FVector(GetActorLocation().X - velocity, GetActorLocation().Y + velocity * bandera, GetActorLocation().Z));
+	if (GetActorLocation().Y > GetPosicion().Y + 100 || GetActorLocation().Y < GetPosicion().Y - 200) {
 		bandera *= -1;
+
 	}
 	if (GetActorLocation().X < -1800) {
 		SetActorLocation(FVector(posicion));
@@ -44,12 +41,4 @@ void ANaveEnemigaReabastecimientoSupra::Escapar()
 
 }
 
-void ANaveEnemigaReabastecimientoSupra::repara()
-{
 
-}
-
-void ANaveEnemigaReabastecimientoSupra::Crecer()
-{
-
-}

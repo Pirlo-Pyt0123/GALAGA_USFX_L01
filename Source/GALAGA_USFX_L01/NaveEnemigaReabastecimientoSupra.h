@@ -27,8 +27,7 @@ protected:
 	virtual void Mover(float DeltaTime)override;
 	virtual void destruirse();
 	virtual void Escapar();
-	void repara();
-	void Crecer();
+	
 
    
 };

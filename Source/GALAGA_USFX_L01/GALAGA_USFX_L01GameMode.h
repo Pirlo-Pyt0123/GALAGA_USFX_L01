@@ -66,7 +66,6 @@ public:
 	//TArray<ANaveEnemigaEspia* >TANavesEnemigasEspia;
 	//TArray<ANaveEnemigaReabastecimiento* >TANavesEnemigasReabastecimiento;
 	TArray<ANaveEnemigaNodriza* >TANavesEnemigasNodriza;
-	TArray<ANaveEnemiga*> TAnaveEnemigaPerronas;
 	TArray<ANaveEnemiga*> Enemigos;
 	
 

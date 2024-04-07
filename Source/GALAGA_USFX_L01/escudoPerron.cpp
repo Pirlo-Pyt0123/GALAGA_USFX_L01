@@ -36,9 +36,11 @@ AescudoPerron::AescudoPerron()
 
 }
 
+
+
 void AescudoPerron::desaparecer(float _coolTime)
 {
-	if (_coolTime > 1)
+	if (_coolTime > 10)
 	{
 		Destroy();
 	}

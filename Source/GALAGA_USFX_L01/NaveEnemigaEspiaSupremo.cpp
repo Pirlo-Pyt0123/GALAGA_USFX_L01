@@ -31,7 +31,6 @@ void ANaveEnemigaEspiaSupremo::Mover(float DeltaTime)
 	else {
 		SetActorLocation(FVector(GetActorLocation().X, GetActorLocation().Y + GetSpeed(), GetActorLocation().Z));
 	}
-
 	if (GetActorLocation().X < -1800) {
 		SetActorLocation(FVector(posicion));
 	}

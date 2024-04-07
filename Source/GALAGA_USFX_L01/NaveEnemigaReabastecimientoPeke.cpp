@@ -17,15 +17,14 @@ void ANaveEnemigaReabastecimientoPeke::Tick(float DeltaTime)
 
 void ANaveEnemigaReabastecimientoPeke::Mover(float DeltaTime)
 {
+	velocity = -5;
 	ANaveEnemigaReabastecimiento::Mover(DeltaTime);
-	SetActorLocation(FVector(GetActorLocation().X - 2, GetActorLocation().Y, GetActorLocation().Z));
-	SetActorRotation(FRotator(bandera, 90, 90));
-	if (bandera >= 360) {
-		bandera = 0;
+	SetActorLocation(FVector(GetActorLocation().X - 2, GetActorLocation().Y, GetActorLocation().Z + 1 * bandera));
+	if (GetActorLocation().Z > 800 || GetActorLocation().Z < 0) {
+		bandera *= -1;
 	}
-	bandera++;
 	if (GetActorLocation().X < -1800) {
-		SetActorLocation(FVector(posicion));
+		SetActorLocation(posicion);
 	}
 }
 

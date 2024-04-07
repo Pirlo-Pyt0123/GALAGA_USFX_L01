@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "InventarioComp.h"	
 #include "MunicionBeta.h"	
+#include "shieldActive.h"
+#include "GALAGA_USFX_L01Projectile.h"
 #include "GALAGA_USFX_L01Pawn.generated.h"
 
 UCLASS(Blueprintable)
@@ -38,6 +40,8 @@ public:
 		bool bSelfMoved, FVector HitLocation, FVector
 		HitNormal, FVector NormalImpulse, const FHitResult&
 		Hit) override;
+	virtual void ReturnToStart();
+
 	AGALAGA_USFX_L01Pawn();
 
 	/** Offset from the ships location to spawn projectiles */
@@ -55,8 +59,9 @@ public:
 	/** Sound to play each time we fire */
 	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
 	class USoundBase* FireSound;
-
+	
 	// Begin Actor Interface
+	
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 	// End Actor Interface
@@ -73,13 +78,15 @@ public:
 	static const FName FireForwardBinding;
 	static const FName FireRightBinding;
 
-private:
+	static const FName MoveUpBinding;
 
+private:
+	FVector StartLocation;
 	/* Flag to control firing  */
 	uint32 bCanFire : 1;
 
 	/** Handle for efficient management of ShotTimerExpired timer */
-	FTimerHandle TimerHandle_ShotTimerExpired;
+
 
 public:
 	/** Returns ShipMeshComponent subobject **/
@@ -88,5 +95,28 @@ public:
 	FORCEINLINE class UCameraComponent* GetCameraComponent() const { return CameraComponent; }
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+
+	FTimerHandle TimerHandle_ShotTimerExpired;
+
+	void TouchStarted(ETouchIndex::Type FingerIndex, FVector Location);
+
+
+	
+	void FireProjectile();
+	void Saltar();
+
+	void DejarDeSaltar();
+	
+	bool bCanJump;
+
+	bool PuedeSaltar;
+
+	FTimerHandle TiempoSalto;
+
+	float salto1;
+
+	float AlturaMaxima;
+	
+
 };
 

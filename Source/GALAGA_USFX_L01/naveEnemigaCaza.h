@@ -5,10 +5,11 @@
 
 #include "CoreMinimal.h"
 #include "NaveEnemiga.h"
-#include "Particles/ParticleSystemComponent.h" // Incluir la cabecera para componentes de partículas
+#include "seMueveComponent.h"
+#include "Particles/ParticleSystemComponent.h"
 #include "naveEnemigaCaza.generated.h"
 
-
+class UseMueveComponent;
 UCLASS()
 class GALAGA_USFX_L01_API AnaveEnemigaCaza : public ANaveEnemiga
 {
@@ -41,7 +42,7 @@ public:
 	FORCEINLINE void SetCantidadBombas(int _cantidadBombas) { cantidadBombas = _cantidadBombas; }
 	
 	virtual void Tick(float DeltaTime) override;
-
+	UseMueveComponent* MoviminetoComponent;
 
 protected:
 	virtual void Mover(float DeltaTime);

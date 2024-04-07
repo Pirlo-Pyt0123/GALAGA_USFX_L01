@@ -3,6 +3,7 @@
 
 #include "Kismet/GameplayStatics.h"
 #include "shieldActive.h"
+#include "GALAGA_USFX_L01Pawn.h"
 
 // Sets default values for this component's properties
 UshieldActive::UshieldActive()
@@ -12,8 +13,8 @@ UshieldActive::UshieldActive()
 	PrimaryComponentTick.bCanEverTick = true;
 	//ShieldActivado = CreateDefaultSubobject<USceneComponent>(TEXT("MySceneComponent"));
 	//SeetRootComponent(ShieldActivado);
-	NaveControl = Cast<AGALAGA_USFX_L01Pawn>(UGameplayStatics::GetPlayerPawn(this, 0));
-
+	//NaveControl = Cast<AGALAGA_USFX_L01Pawn>(UGameplayStatics::GetPlayerPawn(this, 0));
+	
 }
 
 void UshieldActive::Spawn()
@@ -21,10 +22,10 @@ void UshieldActive::Spawn()
 	UWorld* TheWorld = GetWorld();
 	if (TheWorld != nullptr) {
 		tiempoAparecer++;
-		if (tiempoAparecer >= 200) {
+		if (tiempoAparecer >= 8) {
 			FTransform TransformShield(this->GetComponentTransform());
 			
-			TransformShield.SetLocation(GetComponentLocation() + FVector(200, 0, 0));
+			TransformShield.SetLocation(GetComponentLocation() );
 			TransformShield.SetRotation(FQuat(0.f, 90.f, 0.f, 90.f));
 			//TransformBarrera
 			TheWorld->SpawnActor(shieldSpawn, &TransformShield);
@@ -43,7 +44,7 @@ void UshieldActive::BeginPlay()
 	
 	//Spawn();
 	// ...
-
+	SetupPlayerInputComponent(GetOwner()->InputComponent);
 	
 }
 
@@ -53,17 +54,30 @@ void UshieldActive::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	if (estaWea > 5.0f) {
-		Spawn();
-		estaWea = 0;
-	}
-	if (ShieldActivado && GetOwner())
-	{
-		// Update the position of the ShieldActivado to match the position of the owning actor (the ship)
-		ShieldActivado->SetWorldLocation(GetOwner()->GetActorLocation());
-	}
+	//if (estaWea > 5.0f) {
+	//	Spawn();
+	//	estaWea = 0;
+	//}
+	//if (ShieldActiveComponent && GetOwner())
+	//{
+	//	// Update the position of the ShieldActivado to match the position of the owning actor (the ship)
+	//	ShieldActiveComponent->SetWorldLocation(GetOwner()->GetActorLocation());
+	//}
 
-	estaWea += GetWorld()->DeltaTimeSeconds;
+	//estaWea += GetWorld()->DeltaTimeSeconds;
 	// ...
+}
+
+void UshieldActive::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	check(PlayerInputComponent);
+
+	// Registra la función OnKeyPressed para manejar la entrada de teclado
+	PlayerInputComponent->BindAction("SpawnShield", IE_Pressed, this, &UshieldActive::OnKeyPressed);
+}
+
+void UshieldActive::OnKeyPressed()
+{
+	Spawn();
 }
 
