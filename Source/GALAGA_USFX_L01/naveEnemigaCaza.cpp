@@ -33,7 +33,7 @@ AnaveEnemigaCaza::AnaveEnemigaCaza()
 	ExploSound = explosionSound.Object;
 	//colisionar y fiumba
 	NaveEnemigaMesh->OnComponentHit.AddDynamic(this, &AnaveEnemigaCaza::FuncionDeManejoDeColision);
-	MoviminetoComponent = CreateDefaultSubobject<UseMueveComponent>(TEXT("DisparoComponent"));
+	MoviminetoComponent = CreateDefaultSubobject<UseMueveComponent>(TEXT("Move"));
 
 
 

@@ -2,19 +2,19 @@
 
 #pragma once
 
-#include "GALAGA_USFX_L01Pawn.h"
 #include "CoreMinimal.h"
 #include "Components/SceneComponent.h"
 #include "escudoPerron.h"
+#include "GameFramework/PlayerInput.h"
 #include "shieldActive.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class GALAGA_USFX_L01_API UshieldActive : public USceneComponent
 {
 	GENERATED_BODY()
 
-public:	
+public:
 	// Sets default values for this component's properties
 	UshieldActive();
 
@@ -32,7 +32,7 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
@@ -43,5 +43,6 @@ protected:
 
 	//float ShieldActivadoDelay = 0.0f;
 	void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent);
+public:
 	void OnKeyPressed();
 };

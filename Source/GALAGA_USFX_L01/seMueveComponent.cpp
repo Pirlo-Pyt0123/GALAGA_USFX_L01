@@ -32,7 +32,7 @@ void UseMueveComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 	if (Actor)
 	{
 		FVector PosicionActual = Actor->GetActorLocation();
-		FVector NuevaPosicion = FVector(PosicionActual.X - 100 * DeltaTime * 2, PosicionActual.Y ,PosicionActual.Z + sin(PosicionActual.X / 180) * 8 * 2);
+		FVector NuevaPosicion = FVector(PosicionActual.X - 100 * DeltaTime * 2, PosicionActual.Y ,PosicionActual.Z + sin(PosicionActual.X / 180) * 2 * 2);
 		Actor->SetActorLocation(NuevaPosicion);
 		if (NuevaPosicion.X < -1600) {
 			Actor->SetActorLocation(FVector(1500.0f, PosicionActual.Y, 250.0f));

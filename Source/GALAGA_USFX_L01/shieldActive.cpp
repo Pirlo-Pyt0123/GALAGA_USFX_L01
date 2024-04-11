@@ -3,9 +3,8 @@
 
 #include "Kismet/GameplayStatics.h"
 #include "shieldActive.h"
-#include "GALAGA_USFX_L01Pawn.h"
 
-// Sets default values for this component's properties
+
 UshieldActive::UshieldActive()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
@@ -14,7 +13,7 @@ UshieldActive::UshieldActive()
 	//ShieldActivado = CreateDefaultSubobject<USceneComponent>(TEXT("MySceneComponent"));
 	//SeetRootComponent(ShieldActivado);
 	//NaveControl = Cast<AGALAGA_USFX_L01Pawn>(UGameplayStatics::GetPlayerPawn(this, 0));
-	
+
 }
 
 void UshieldActive::Spawn()
@@ -24,8 +23,8 @@ void UshieldActive::Spawn()
 		tiempoAparecer++;
 		if (tiempoAparecer >= 8) {
 			FTransform TransformShield(this->GetComponentTransform());
-			
-			TransformShield.SetLocation(GetComponentLocation() );
+
+			TransformShield.SetLocation(GetComponentLocation());
 			TransformShield.SetRotation(FQuat(0.f, 90.f, 0.f, 90.f));
 			//TransformBarrera
 			TheWorld->SpawnActor(shieldSpawn, &TransformShield);
@@ -41,11 +40,10 @@ void UshieldActive::Spawn()
 void UshieldActive::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	//Spawn();
 	// ...
 	SetupPlayerInputComponent(GetOwner()->InputComponent);
-	
 }
 
 
@@ -65,19 +63,21 @@ void UshieldActive::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 	//}
 
 	//estaWea += GetWorld()->DeltaTimeSeconds;
-	// ...
+
 }
 
 void UshieldActive::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	check(PlayerInputComponent);
+	FInputActionKeyMapping acEscudo("ActivarEscudo", EKeys::K, 0, 0, 0, 0);
 
-	// Registra la función OnKeyPressed para manejar la entrada de teclado
-	PlayerInputComponent->BindAction("SpawnShield", IE_Pressed, this, &UshieldActive::OnKeyPressed);
+	UPlayerInput::AddEngineDefinedActionMapping(acEscudo);
+
+
+	PlayerInputComponent->BindAction("ActivarEscudo", IE_Pressed, this, &UshieldActive::OnKeyPressed);
 }
 
 void UshieldActive::OnKeyPressed()
 {
 	Spawn();
 }
-

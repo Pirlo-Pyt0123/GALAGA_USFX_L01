@@ -42,7 +42,7 @@ void AnaveEnemigaCazaSigilosa::Tick(float DeltaTime)
 
 void AnaveEnemigaCazaSigilosa::Mover(float DeltaTime)
 {
-	AnaveEnemigaCaza::Mover(DeltaTime);
+	/*AnaveEnemigaCaza::Mover(DeltaTime);
 	velocity = 3;
 	SetActorLocation(FVector(GetActorLocation().X - velocity, GetActorLocation().Y + velocity * bandera, GetActorLocation().Z));
 	if (GetActorLocation().Y > GetPosicion().Y +100 || GetActorLocation().Y < GetPosicion().Y-200){
@@ -51,7 +51,7 @@ void AnaveEnemigaCazaSigilosa::Mover(float DeltaTime)
 	}
 	if (GetActorLocation().X < -1800) {
 		SetActorLocation(FVector(posicion));
-	}
+	}*/
 }
 
 void AnaveEnemigaCazaSigilosa::Disparar(FVector DireccionFuego)

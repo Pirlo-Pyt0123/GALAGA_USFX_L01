@@ -1,6 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserve
 
-#include "GALAGA_USFX_L01Projectile.h"
+
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Components/StaticMeshComponent.h"

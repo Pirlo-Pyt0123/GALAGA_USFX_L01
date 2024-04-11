@@ -14,7 +14,7 @@ class UStaticMeshComponent;
 class proyectilAmigo;
 class AnaveEnemigaCazaSigilosa;
 
-UCLASS(config=Game)
+UCLASS(config = Game)
 class AGALAGA_USFX_L01Projectile : public AActor
 {
 	GENERATED_BODY()
@@ -30,7 +30,7 @@ class AGALAGA_USFX_L01Projectile : public AActor
 private:
 	uint32 bCanFire : 1;
 
-	
+
 
 	//FTimerHandle TimerHandle_ShotTimerExpired;
 public:
@@ -45,11 +45,10 @@ public:
 	/** Returns ProjectileMovement subobject **/
 	FORCEINLINE UProjectileMovementComponent* GetProjectileMovement() const { return ProjectileMovement; }
 	FVector GunOffset;
-	float FireRate= 0.1f;
-	void ShotTimerExpired();
+	float FireRate = 0.1f;
+	//void ShotTimerExpired();
 	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
 	class USoundBase* FireSound;
 protected:
 	FTimerHandle TimerHandle_ShotTimerExpired;
 };
-
